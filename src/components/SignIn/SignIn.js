@@ -1,0 +1,97 @@
+import React, { Component, Fragment } from "react";
+import { Route, Redirect } from "react-router-dom";
+import SignInForm from "./SignInForm";
+import { connect } from "react-redux";
+
+import "./sign.css";
+
+class SignIn extends Component {
+  state = {
+    uid: "",
+    admin: true,
+    clear: false
+  };
+  myfunc = () => {
+    console.log("trnfvndjkcnj");
+    let x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function() {
+      x.className = x.className.replace("show", "");
+    }, 5000);
+  };
+  componentWillMount() {
+    if(this.props.auth.uid) {
+      window.location.href = "/clients/"
+      console.log("checked")
+    }
+    console.log("checked")
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("this is next props", nextProps);
+    if (nextProps.auth.uid) {
+      fetch(
+        "https://us-central1-dexpert-admin.cloudfunctions.net/api/admins/" +
+          nextProps.auth.uid,
+        {
+          headers: {
+            Authorization:
+              "Bearer " + nextProps.auth.stsTokenManager.accessToken
+          }
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            admin: true
+          });
+          console.log(data,"ye hain admin ka data")
+          let role = (data.res.admin.role.admin) ? "admin" : (data.res.admin.role.manager) ? "manager" : (data.res.admin.role.editor) ? "editor" : "viewer";
+          localStorage.setItem("role", role);
+          if (data.error) {
+            console.log("calling my functon");
+            this.myfunc();
+            this.setState({
+              admin: false
+            });
+          } else {
+            window.location.href = "/clients/";
+          }
+        })
+
+        .catch(err => console.log(err));
+    }
+  }
+
+  render() {
+    console.log("xsxsxsd");
+    // if (auth.uid && this.state.admin) return <Redirect to={"/profile/"} />;
+    return (
+      <Fragment>
+        <div className="App">
+          <div className="App__Aside">
+            <h3>WELCOME TO DEXPERT</h3>
+            <p className="Para">
+              One Stop station for your Project Express.
+            </p>
+          </div>
+          <div className="App__Form">
+            <SignInForm admin={this.state.admin} clear={this.state.clear} />
+          </div>
+        </div>
+        <div id="snackbar">
+          Not an Admin ! ! !<br />
+          Please contact support or login with an admin id
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  // console.log("my name is state",state);
+  return {
+    auth: state.firebase.auth
+  };
+};
+export default connect(mapStateToProps)(SignIn);
