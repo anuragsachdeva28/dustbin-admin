@@ -1,2 +1,2 @@
-# dexpert
-An Admin panel for Dexpert Portal.
+# smart-dustbin
+Panel for municipality department.
