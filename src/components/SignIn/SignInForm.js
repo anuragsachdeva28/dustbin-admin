@@ -88,7 +88,7 @@ class SignInForm extends Component {
           <label className="login">Log in</label>
           <div className="FormField">
             <input
-              type="email"
+              type="text"
               id="email"
               className="FormField__Input"
               placeholder="dexpert id"
@@ -137,7 +137,7 @@ class SignInForm extends Component {
 
 
 const mapStateToProps = (state)  => {
-  console.log("cdscDSCdscdscdsc",state)
+  // console.log("This is the state",state)
   return {
     authError: state.auth.authError,
     auth: state.firebase.auth

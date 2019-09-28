@@ -89,7 +89,7 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("my name is state",state);
+  console.log("my name is state",state);
   return {
     auth: state.firebase.auth
   };

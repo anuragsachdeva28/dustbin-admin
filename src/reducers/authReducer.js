@@ -10,9 +10,12 @@ const authReducer =(state=initialState,action) => {
             }
         case 'LOGIN_SUCCESS':
             console.log("login success");
+            // console.log(action.payload);
             return {
                 ...state,
+                data:action.payload,
                 authError: null
+
             }
         case 'SIGNOUT_SUCCESS':
             console.log("signout success");

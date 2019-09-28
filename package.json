@@ -2,7 +2,9 @@
   "name": "smart-dustbin",
   "version": "0.1.0",
   "private": true,
+  "author": "Anurag Sachdeva",
   "dependencies": {
+    "antd": "^3.23.4",
     "array-move": "^2.1.0",
     "axios": "^0.19.0",
     "body-parser": "^1.18.3",

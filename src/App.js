@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import Main from "./components/Main/Main";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Navbar/Navbar";
+import LandingPage from "./components/LandingPage/LandingPage";
 import SignIn from "./components/SignIn/SignIn";
 import Page404 from "./404Page"
 import Profile from "./components/Profile/Profile";
@@ -23,7 +25,7 @@ class App extends Component {
       <Router>
         <div className="App">
             <Switch>
-                <Route exact path="/" render={() => (<Redirect to="/signin" />)} />
+                <Route exact path="/" component={LandingPage} />
 
 
 
@@ -42,6 +44,7 @@ class App extends Component {
                 <Route component={Page404} />
 
             </Switch>
+            {/*<Route exact path={"/"} component={LandingPage} />*/}
             <Route path="/clients/" component={Main} />
             <Route path="/admins/" exact component={Admin} />
             <Route path={"/admins/add/"} component={AddAdmin} />
