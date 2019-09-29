@@ -29,7 +29,7 @@ export const signIn = (credentials) => dispatch => {
         })
             .then(res => res.json())
             .then((data) => {
-                console.log(data);
+
                 dispatch({ type: 'LOGIN_SUCCESS', payload:data})
             })
             .catch((err) => {

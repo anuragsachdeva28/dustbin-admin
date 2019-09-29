@@ -20,7 +20,8 @@ class SignIn extends Component {
     }, 5000);
   };
   componentWillMount() {
-    if(this.props.auth.uid) {
+    console.log("my name is anurag", this.props)
+    if(this.props.auth) {
       window.location.href = "/clients/"
       console.log("checked")
     }
@@ -91,7 +92,7 @@ class SignIn extends Component {
 const mapStateToProps = state => {
   console.log("my name is state",state);
   return {
-    auth: state.firebase.auth
+    auth: state.auth.data
   };
 };
 export default connect(mapStateToProps)(SignIn);

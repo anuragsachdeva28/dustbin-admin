@@ -8,7 +8,8 @@ class SignInForm extends Component {
   state = {
     email: '',
     password: '',
-    loading: false
+    loading: false,
+    error:null
   }
 
   forgetPassword = () => {
@@ -27,14 +28,15 @@ class SignInForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({loading:true});
+    this.setState({loading:true,error:null});
     console.log("The form was submitted with the following data:");
 
     this.props.signIn(this.state);
     setTimeout( ()=>{
 
-
-      if(this.props.authError){
+      console.log(this.props);
+      if(this.props.auth.error){
+        this.setState({error:this.props.auth.error})
         this.setState({loading:false})
         this.setState({
           email:"",
@@ -49,34 +51,34 @@ class SignInForm extends Component {
 
       }
 
-    },2000)
+    },4000)
 
     // console.log(this.props,"k,kj,kj,hj,hj,hj,")
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.admin){
-      console.log("no error and is a admin")
-
-    }
-    else {
-      this.setState({loading:false})
-      this.setState({
-        email:"",
-        password:""
-      })
-      console.log("no error but not an admin")
-      this.props.signOut()
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if(nextProps.admin){
+  //     console.log("no error and is a admin")
+  //
+  //   }
+  //   else {
+  //     this.setState({loading:false})
+  //     this.setState({
+  //       email:"",
+  //       password:""
+  //     })
+  //     console.log("no error but not an admin")
+  //     this.props.signOut()
+  //   }
+  // }
 
 
   render() {
-    console.log("see this props right here", this.props);
-    const { authError } = this.props;
+    console.log("see this props right here", this.props.auth);
+    // const error = (this.props.auth.error)?(this.props.auth.error):null;
     const {loading} =this.state;
-
+    // console.log(error);
     return (
       <div className="FormCenter">
         <form
@@ -109,7 +111,7 @@ class SignInForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          { authError ? <p className={'authError'}>Wrong Email or Password</p> : null }
+          { this.state.error ? <p className={'authError'}>Wrong Email or Password</p> : null }
           {/*{ authError ? this.setState({loading:false}): null}*/}
 
           {/*<div className="FormField for">*/}
@@ -137,10 +139,10 @@ class SignInForm extends Component {
 
 
 const mapStateToProps = (state)  => {
-  // console.log("This is the state",state)
+  console.log("This is the state",state)
   return {
     authError: state.auth.authError,
-    auth: state.firebase.auth
+    auth: state.auth.data
   }
 }
 
