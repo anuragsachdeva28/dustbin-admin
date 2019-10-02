@@ -10,13 +10,13 @@ class Dashboard extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            aT: (this.props.auth.stsTokenManager)?this.props.auth.stsTokenManager.accessToken:""
+            aT: (localStorage.getItem("token"))?localStorage.getItem("token"):""
         };
 
     }
 
     componentDidMount() {
-        const url= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients";
+        const url= "https://sdmp-jss.herokuapp.com/api/ward/";
         // console.log(url);
         fetch(url,{
             headers: {
@@ -26,33 +26,17 @@ class Dashboard extends Component{
             .then(res => res.json())
             .then(data => {
 
-                console.log("dashboard component",data.res);
+                console.log("dashboard component",data.content);
 
-                const arr = data.res.clients;
-                this.setState({ clients: arr })
+                const arr = data.content;
+                this.setState({ wards: arr })
 
             })
 
             .catch(err => console.log(err))
 
 
-        fetch("https://us-central1-dexpert-admin.cloudfunctions.net/api/admins/" + this.props.auth.uid, {
-                headers: {
-                    Authorization:
-                        "Bearer " + this.state.aT
-                }
-            }
-        )
-            .then(res => res.json())
-            .then(data => {
 
-                console.log(data,"ye hain admin ka data")
-                let role = (data.res.admin.role.admin) ? "admin" : (data.res.admin.role.manager) ? "manager" : (data.res.admin.role.editor) ? "editor" : "viewer";
-                localStorage.setItem("role", role);
-
-            })
-
-            .catch(err => console.log(err));
 
     }
 
@@ -71,13 +55,13 @@ class Dashboard extends Component{
                 <br />
 
                 <div className="client_list">
-                    { this.state.clients && this.state.clients.map( (client,key) =>
-                        <NavLink to = {"/clients/" + (client.id) + "/projects/"} key={key} activeClassName={"active"} >
-                            <div className="listTab">{ client.name }</div>
+                    { this.state.wards && this.state.wards.map( (ward,key) =>
+                        <NavLink to = {"/clients/" + (ward.id) + "/projects/"} key={key} activeClassName={"active"} >
+                            <div className="listTab">{ ward.name }</div>
                         </NavLink>
                     ) }
 
-                    { !this.state.clients && <div>
+                    { !this.state.wards && <div>
                         <lines className="shine client_holder_num"></lines>
                         <lines className="shine client_holder_num"></lines>
                         <lines className="shine client_holder_num"></lines>

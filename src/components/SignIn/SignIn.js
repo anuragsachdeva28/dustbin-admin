@@ -20,47 +20,21 @@ class SignIn extends Component {
     }, 5000);
   };
   componentWillMount() {
+    // check auth id from local storage
     console.log("my name is anurag", this.props)
-    if(this.props.auth) {
+    if(localStorage.getItem("token")) {
       window.location.href = "/clients/"
       console.log("checked")
     }
     console.log("checked")
-  }
+    }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("this is next props", nextProps);
-    if (nextProps.auth.uid) {
-      fetch(
-        "https://us-central1-dexpert-admin.cloudfunctions.net/api/admins/" +
-          nextProps.auth.uid,
-        {
-          headers: {
-            Authorization:
-              "Bearer " + nextProps.auth.stsTokenManager.accessToken
-          }
-        }
-      )
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            admin: true
-          });
-          console.log(data,"ye hain admin ka data")
-          let role = (data.res.admin.role.admin) ? "admin" : (data.res.admin.role.manager) ? "manager" : (data.res.admin.role.editor) ? "editor" : "viewer";
-          localStorage.setItem("role", role);
-          if (data.error) {
-            console.log("calling my functon");
-            this.myfunc();
-            this.setState({
-              admin: false
-            });
-          } else {
-            window.location.href = "/clients/";
-          }
-        })
-
-        .catch(err => console.log(err));
+    componentWillReceiveProps(nextProps) {
+      console.log("this is next props", nextProps);
+      if (nextProps.auth.access_token) {
+      localStorage.setItem("token",nextProps.auth.access_token);
+      localStorage.setItem("role",nextProps.auth.authorities)
+      window.location.href = "/clients/"
     }
   }
 
