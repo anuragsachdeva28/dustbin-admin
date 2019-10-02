@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './LandingPage.css';
 import Navbar from "../Navbar/Navbar";
 import {Button} from "react-bootstrap";
-import Dustbin from "../../images/trash.png";
+import Dustbin from "../../images/bin.png";
 
 const LandingPage = () => (
     <div className="">
