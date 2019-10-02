@@ -25,6 +25,7 @@
 
 .land_main{
     padding: 0 40px;
+    width: 100vh;
 }
 
 .signin_btn {
@@ -42,4 +43,16 @@
 
 .land_page {
     display: flex;
+}
+
+.main_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_image img {
+    width: 80%;
+    opacity: 0.74;
 }

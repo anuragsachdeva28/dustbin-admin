@@ -4,6 +4,8 @@
     <list default="true" id="5b5c34a2-f672-44e2-99d4-552f43305f8f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LandingPage/LandingPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LandingPage/LandingPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LandingPage/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LandingPage/LandingPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn/SignIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SignIn/SignInForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn/SignInForm.js" afterDir="false" />
@@ -77,14 +79,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+            <state relative-caret-position="83">
+              <caret line="53" column="137" lean-forward="true" selection-start-line="53" selection-start-column="137" selection-end-line="53" selection-end-column="137" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -141,14 +161,14 @@
         <option value="$PROJECT_DIR$/src/components/Button.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Navbar/Navbar.css" />
-        <option value="$PROJECT_DIR$/src/components/LandingPage/LandingPage.css" />
-        <option value="$PROJECT_DIR$/src/components/LandingPage/LandingPage.js" />
         <option value="$PROJECT_DIR$/src/reducers/authReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/authActions.js" />
         <option value="$PROJECT_DIR$/src/components/SignIn/SignInForm.js" />
         <option value="$PROJECT_DIR$/src/components/Main/Main.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/SignIn/SignIn.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/LandingPage/LandingPage.js" />
+        <option value="$PROJECT_DIR$/src/components/LandingPage/LandingPage.css" />
       </list>
     </option>
   </component>
@@ -184,6 +204,13 @@
               <item name="dustbin-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dustbin-admin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dustbin-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="LandingPage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dustbin-admin" type="b2602c69:ProjectViewProjectNode" />
@@ -267,17 +294,18 @@
       <updated>1568999494005</updated>
       <workItem from="1568999498043" duration="23619000" />
       <workItem from="1569572841095" duration="23601000" />
-      <workItem from="1569865226372" duration="6503000" />
+      <workItem from="1569865226372" duration="8873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53723000" />
+    <option name="totallyTimeSpent" value="56093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15636635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15636635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -291,7 +319,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -389,13 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Main/Tasks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12330">
@@ -403,13 +424,6 @@
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -504,11 +518,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        <state relative-caret-position="83">
+          <caret line="53" column="137" lean-forward="true" selection-start-line="53" selection-start-column="137" selection-end-line="53" selection-end-column="137" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LandingPage/LandingPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
         </state>
       </provider>
     </entry>
