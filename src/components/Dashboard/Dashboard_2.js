@@ -10,13 +10,13 @@ class Dashboard_2 extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            aT: (this.props.auth.stsTokenManager)?this.props.auth.stsTokenManager.accessToken:""
+            aT: (localStorage.getItem("token"))?localStorage.getItem("token"):""
         };
 
     }
 
     componentDidMount() {
-        const url= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients";
+        const url= "https://sdmp-jss.herokuapp.com/api/ward/";
         // console.log(url);
         fetch(url,{
             headers: {
@@ -26,10 +26,10 @@ class Dashboard_2 extends Component{
             .then(res => res.json())
             .then(data => {
 
-                console.log("dashboard component",data.res);
+                console.log("dashboard component",data.content);
 
-                const arr = data.res.clients;
-                this.setState({ clients: arr })
+                const arr = data.content;
+                this.setState({ wards: arr })
 
             })
 
@@ -47,13 +47,13 @@ class Dashboard_2 extends Component{
                 <br />
 
                 <div className="client_list">
-                    { this.state.clients && this.state.clients.map( (client,key) =>
-                        <NavLink to = {"/employees/clients/" + (client.id) + "/employees/"} key={key} activeClassName={"active"} >
-                            <div className="listTab">{ client.name }</div>
+                    { this.state.wards && this.state.wards.map( (ward,key) =>
+                        <NavLink to = {"/employees/clients/" + (ward.id) + "/employees/"} key={key} activeClassName={"active"} >
+                            <div className="listTab">{ ward.name }</div>
                         </NavLink>
                     ) }
 
-                    { !this.state.clients && <div><lines className="shine client_holder_num"></lines>
+                    { !this.state.wards && <div><lines className="shine client_holder_num"></lines>
                         <lines className="shine client_holder_num"></lines>
                         <lines className="shine client_holder_num"></lines>
 

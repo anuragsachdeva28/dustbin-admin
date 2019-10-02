@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import {connect} from "react-redux";
 
-class AddClient extends Component {
+class AddWard extends Component {
   state = {
     name:"",
+    description:"",
     loading:false
   }
 
@@ -22,12 +23,15 @@ class AddClient extends Component {
     })
 
     let name = this.state.name;
-    let dataObj = {name}
-    const url= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients";
+    let description = this.state.description;
+    let dataObj = {name,description};
+    console.log(dataObj);
+    const url= "https://sdmp-jss.herokuapp.com/api/ward/";
     // console.log(url);
     fetch(url,{
       headers: {
-        Authorization: "Bearer "+this.props.auth.stsTokenManager.accessToken
+        Authorization: "Bearer "+localStorage.getItem("token"),
+        "content-type":"application/json"
       },
       method: 'POST',
       body: JSON.stringify(dataObj)
@@ -62,10 +66,21 @@ class AddClient extends Component {
           <Form onSubmit={this.handleSubmit} >
             <Form.Group as={Row}>
               <Form.Label column sm="2" className="clientDetail">
-                Client name
+                Ward Name
               </Form.Label>
+
               <Col sm="4">
                 <Form.Control id="name" onChange={this.handleChange} type="text" placeholder="" className="field" value={this.state.name} />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row}>
+              <Form.Label column sm="2" className="clientDetail">
+                Ward Description
+              </Form.Label>
+
+              <Col sm="4">
+                <Form.Control id="description" onChange={this.handleChange} type="text" placeholder="" className="field" value={this.state.description} />
               </Col>
             </Form.Group>
 
@@ -118,4 +133,4 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth
   }
 }
-export default connect(mapStateToProps)(AddClient);
+export default connect(mapStateToProps)(AddWard);

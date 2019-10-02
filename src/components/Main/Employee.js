@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import {connect} from "react-redux";
 import {Route} from "react-router-dom";
 import Dashboard_2 from "../Dashboard/Dashboard_2";
-import AddClient from "./AddClient";
+import AddWard from "./AddWard";
 import NO_EMPLOYEE from "../../no_emp.png";
 import {Button, Form, Modal} from "react-bootstrap";
 import DatePicker from "react-datepicker/es";

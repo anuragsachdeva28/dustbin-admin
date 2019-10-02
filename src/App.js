@@ -9,7 +9,7 @@ import Page404 from "./404Page"
 import Profile from "./components/Profile/Profile";
 import Admin from "./components/Main/Admin";
 import Employee from "./components/Main/Employee";
-import EmployeeClient from "./components/Main/EmployeeClient";
+import SupervisorWard from "./components/Main/SupervisorWard";
 import AddAdmin from "./components/Main/AddAdmin";
 import SignInForm from "./components/SignIn/SignInForm";
 import {connect} from "react-redux";
@@ -40,7 +40,7 @@ class App extends Component {
 
 
 
-                <Route path="/employees/" component={EmployeeClient} />
+                <Route path="/employees/" component={SupervisorWard} />
                 <Route component={Page404} />
 
             </Switch>

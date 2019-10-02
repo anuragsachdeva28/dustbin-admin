@@ -11,7 +11,7 @@ import Tasks from './Tasks';
 import Employee from './Employee';
 import AddEmp from './AddEmp';
 import Dashboard from "../Dashboard/Dashboard";
-import AddClient from "./AddClient";
+import AddWard from "./AddWard";
 import {connect} from "react-redux";
 
 
@@ -26,7 +26,7 @@ class Main extends Component {
           <Route path="/clients/" component={Dashboard} />
         </div>
 
-        <Route path="/clients/add" component={AddClient} />
+        <Route path="/clients/add" component={AddWard} />
         <Route path="/clients/:cid/projects" component={Projects} />
         {/*<Route path="/projects/" component={Projects} />*/}
         <Route path="/clients/:cid/projects/add" component={AddProject} />
