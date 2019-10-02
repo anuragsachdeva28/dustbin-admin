@@ -139,7 +139,7 @@ class SignInForm extends Component {
 
 
 const mapStateToProps = (state)  => {
-  console.log("This is the state",state)
+  // console.log("This is the state",state)
   return {
     authError: state.auth.authError,
     auth: state.auth.data

@@ -19,7 +19,7 @@ class Main extends Component {
   render() {
       const { auth } = this.props;
       // console.log("ye hain prop", this.props);
-      if(!auth.uid) return <Redirect to={"/signin/"} />
+      if(!localStorage.getItem("token")) return <Redirect to={"/signin/"} />
     return (
       <div className="outer">
         <div className="main">
