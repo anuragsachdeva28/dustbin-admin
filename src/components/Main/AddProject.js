@@ -46,7 +46,7 @@ class AddProject extends Component {
   }
 
   handleCancel = () => {
-    window.location.href = "/clients/"+this.props.match.params.cid+"/projects/";
+    window.location.href = "/wards/"+this.props.match.params.cid+"/projects/";
   }
 
   handleSubmit = (e) => {
@@ -84,7 +84,7 @@ class AddProject extends Component {
             })
           }
           else {
-            window.location.href = "/clients/"+this.props.match.params.cid+"/projects/";
+            window.location.href = "/wards/"+this.props.match.params.cid+"/projects/";
           }
         })
 

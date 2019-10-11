@@ -143,7 +143,7 @@ class AddAdmin extends Component {
     console.log(selectedName);
     // let selectedUser = users[selectedId-1].name;
     // console.log(selectedUser)
-    if (role==="viewer" || role==="editor") return <Redirect to={"/employees/clients/"+this.props.match.params.cid+"/employees/"} />
+    if (role==="viewer" || role==="editor") return <Redirect to={"/supervisors/wards/"+this.props.match.params.cid+"/supervisors/"} />
     return (
       <div className="add-admin">
         <div className="addAdmin_header">

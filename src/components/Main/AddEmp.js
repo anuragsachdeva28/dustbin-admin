@@ -35,7 +35,7 @@ class AddEmp extends Component {
     }
 
     handleCancel = () => {
-        window.location.href = "/employees/clients/"+this.props.match.params.cid+"/employees/";
+        window.location.href = "/supervisors/wards/"+this.props.match.params.cid+"/supervisors/";
     }
 
     handleSubmit = (e) => {
@@ -107,7 +107,7 @@ class AddEmp extends Component {
                 }
                 else {
                     await this.props.reset(this.state.email)
-                    window.location.href = "/employees/clients/"+this.props.match.params.cid+"/employees/";
+                    window.location.href = "/supervisors/wards/"+this.props.match.params.cid+"/supervisors/";
                 }
             })
 
@@ -142,7 +142,7 @@ class AddEmp extends Component {
         console.log(selectedName)
         // let selectedUser = users[selectedId-1].name;
         // console.log(selectedUser)
-        if (role==="viewer" || role==="editor") return <Redirect to={"/employees/clients/"+this.props.match.params.cid+"/employees/"} />
+        if (role==="viewer" || role==="editor") return <Redirect to={"/supervisors/wards/"+this.props.match.params.cid+"/supervisors/"} />
         return (
             <div className="add-user">
                 <div className="addUser_header">

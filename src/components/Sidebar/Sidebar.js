@@ -17,7 +17,7 @@ class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <Link to={"/profile/"} > <img className="logo" src={Logo} alt="logo" /></Link>
-                <NavLink to={"/clients/"} activeClassName={"sidebarActive"}>
+                <NavLink to={"/wards/"} activeClassName={"sidebarActive"}>
                     {/* <Icon
                     icon="fa-folder-open"
                     // onActive="fa-close"
@@ -27,7 +27,7 @@ class Sidebar extends Component {
                      /> */}
                     <div className={"sidebar-div"}><div className={"sidebar-div-inner"}> <img className="icons-side" src={Dexpert} /></div></div>
                 </NavLink>
-                <NavLink to={"/employees/clients/"} activeClassName={"sidebarActive"}>
+                <NavLink to={"/supervisors/wards/"} activeClassName={"sidebarActive"}>
                     {/* <Icon
                         icon="fa-user"
                         title="Employees"

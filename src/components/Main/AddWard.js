@@ -41,7 +41,7 @@ class AddWard extends Component {
 
           console.log("anurag",data);
           if(!data.error){
-            window.location.href = "/clients"
+            window.location.href = "/wards"
           }
           if(data.error){
             this.setState({

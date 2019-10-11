@@ -26,7 +26,7 @@ class Dashboard extends Component{
             .then(res => res.json())
             .then(data => {
 
-                console.log("dashboard component",data.content);
+                console.log("dashboard component",data);
 
                 const arr = data.content;
                 this.setState({ wards: arr })
@@ -51,12 +51,12 @@ class Dashboard extends Component{
             <Fragment>
                 <p className="para_client" >Client List</p>
                 <br />
-                <Link to={"/clients/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>
+                <Link to={"/wards/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>
                 <br />
 
                 <div className="client_list">
                     { this.state.wards && this.state.wards.map( (ward,key) =>
-                        <NavLink to = {"/clients/" + (ward.id) + "/projects/"} key={key} activeClassName={"active"} >
+                        <NavLink to = {"/wards/" + (ward.id) + "/projects/"} key={key} activeClassName={"active"} >
                             <div className="listTab">{ ward.name }</div>
                         </NavLink>
                     ) }

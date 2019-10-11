@@ -23,15 +23,15 @@ class Main extends Component {
     return (
       <div className="outer">
         <div className="main">
-          <Route path="/clients/" component={Dashboard} />
+          <Route path="/wards/" component={Dashboard} />
         </div>
 
-        <Route path="/clients/add" component={AddWard} />
-        <Route path="/clients/:cid/projects" component={Projects} />
+        <Route path="/wards/add" component={AddWard} />
+        <Route path="//wards/:wid/projects" component={Projects} />
         {/*<Route path="/projects/" component={Projects} />*/}
-        <Route path="/clients/:cid/projects/add" component={AddProject} />
+        <Route path="/wards/:wid/projects/add" component={AddProject} />
         {/*<Route path="/projects/add/" component={AddProject} />*/}
-        <Route path="/clients/:cid/projects/:pid/tasks/" component={Tasks} />
+        <Route path="/wards/:wid/projects/:pid/tasks/" component={Tasks} />
         {/*<Route path="/projects/:pid/tasks/" component={Tasks} />*/}
       </div>
     );

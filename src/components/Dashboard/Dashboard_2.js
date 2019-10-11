@@ -43,12 +43,12 @@ class Dashboard_2 extends Component{
             <Fragment>
                 <p className="para_client" >Client List</p>
                 <br />
-                {(role==="admin" || role==="manager") && <Link to={"/employees/clients/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>}
+                {(role==="admin" || role==="manager") && <Link to={"/supervisors/wards/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>}
                 <br />
 
                 <div className="client_list">
                     { this.state.wards && this.state.wards.map( (ward,key) =>
-                        <NavLink to = {"/employees/clients/" + (ward.id) + "/employees/"} key={key} activeClassName={"active"} >
+                        <NavLink to = {"/supervisors/wards/" + (ward.id) + "/supervisors/"} key={key} activeClassName={"active"} >
                             <div className="listTab">{ ward.name }</div>
                         </NavLink>
                     ) }

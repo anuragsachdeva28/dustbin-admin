@@ -29,8 +29,8 @@ class App extends Component {
 
 
 
-                {/*<Route path="/employees/" component={Sidebar} />*/}
-                <Route path="/clients/" component={Sidebar} />
+                {/*<Route path="/supervisors/" component={Sidebar} />*/}
+                <Route path="/wards/" component={Sidebar} />
                 <Route path="/admins/" component={Sidebar} />
 
 
@@ -40,12 +40,12 @@ class App extends Component {
 
 
 
-                <Route path="/employees/" component={SupervisorWard} />
+                <Route path="/supervisors/" component={SupervisorWard} />
                 <Route component={Page404} />
 
             </Switch>
             {/*<Route exact path={"/"} component={LandingPage} />*/}
-            <Route path="/clients/" component={Main} />
+            <Route path="/wards/" component={Main} />
             <Route path="/admins/" exact component={Admin} />
             <Route path={"/admins/add/"} component={AddAdmin} />
         </div>

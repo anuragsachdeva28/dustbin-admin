@@ -68,7 +68,7 @@ class Projects extends Component {
                         <h5 className="projList">DEXPERT</h5>
                     </div>
                     {(role === "admin" || role === "manager") && <div className="addIcon">
-                        <Link to={"/clients/" + this.props.match.params.cid + "/projects/add/"} >
+                        <Link to={"/wards/" + this.props.match.params.cid + "/projects/add/"} >
                             <div className="addIconInside">
                                 {/* <span>+</span> */}
                                 <Icon
@@ -104,7 +104,7 @@ class Projects extends Component {
 
                     {
                         this.state.projects && this.state.projects.map((project, key) =>
-                            <NavLink to={"/clients/" + this.props.match.params.cid + "/projects/" + (project.id) + "/tasks"} key={key} activeClassName={"active"} >
+                            <NavLink to={"/wards/" + this.props.match.params.cid + "/projects/" + (project.id) + "/tasks"} key={key} activeClassName={"active"} >
                                 {console.log(project)}
                                 <CardList
                                     date={project.creationTime ? formatDate(project.creationTime) : "NA"}

@@ -23,7 +23,7 @@ class SignIn extends Component {
     // check auth id from local storage
     console.log("my name is anurag", this.props)
     if(localStorage.getItem("token")) {
-      window.location.href = "/clients/"
+      window.location.href = "/wards/"
       console.log("checked")
     }
     console.log("checked")
@@ -34,7 +34,7 @@ class SignIn extends Component {
       if (nextProps.auth.access_token) {
       localStorage.setItem("token",nextProps.auth.access_token);
       localStorage.setItem("role",nextProps.auth.authorities)
-      window.location.href = "/clients/"
+      window.location.href = "/wards/"
     }
   }
 

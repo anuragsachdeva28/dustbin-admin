@@ -29,11 +29,11 @@ class SupervisorWard extends Component {
             <Fragment>
                 <Sidebar/>
                 <div className="main">
-                    <Route path="/employees/clients/" component={Dashboard_2} />
+                    <Route path="/supervisors/wards/" component={Dashboard_2} />
                 </div>
-                <Route path="/employees/clients/add/" component={AddWard} />
-                <Route path="/employees/clients/:cid/employees/" exact component={Employee} />
-                <Route path="/employees/clients/:cid/employees/add/" component={AddEmp} />
+                <Route path="/supervisors/wards/add/" component={AddWard} />
+                <Route path="/supervisors/wards/:wid/supervisors/" exact component={Employee} />
+                <Route path="/supervisors/wards/:wid/supervisors/add/" component={AddEmp} />
             </Fragment>
 
         );
