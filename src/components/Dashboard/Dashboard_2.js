@@ -43,7 +43,7 @@ class Dashboard_2 extends Component{
             <Fragment>
                 <p className="para_client" >Client List</p>
                 <br />
-                {(role==="admin" || role==="manager") && <Link to={"/supervisors/wards/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>}
+                <Link to={"/supervisors/wards/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>
                 <br />
 
                 <div className="client_list">

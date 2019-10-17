@@ -8,7 +8,7 @@ import SignIn from "./components/SignIn/SignIn";
 import Page404 from "./404Page"
 import Profile from "./components/Profile/Profile";
 import Admin from "./components/Main/Admin";
-import Employee from "./components/Main/Employee";
+import Employee from "./components/Main/Supervisor";
 import SupervisorWard from "./components/Main/SupervisorWard";
 import AddAdmin from "./components/Main/AddAdmin";
 import SignInForm from "./components/SignIn/SignInForm";
@@ -38,9 +38,8 @@ class App extends Component {
 
                 <Route path="/profile/" component={Profile} />
 
-
-
                 <Route path="/supervisors/" component={SupervisorWard} />
+
                 <Route component={Page404} />
 
             </Switch>

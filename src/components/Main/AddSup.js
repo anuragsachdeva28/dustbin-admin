@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import './AddEmp.css';
+import './AddSup.css';
 import {Button, Col, Form, Row, Dropdown, MenuItem} from "react-bootstrap";
 import {connect} from "react-redux";
 import { Redirect } from "react-router-dom";
 import {reset} from "../../actions/authActions";
+import Autocomplete from "./Autocomplete";
 
 
-class AddEmp extends Component {
+class AddSup extends Component {
     state = {
         name: "",
         email: "",
@@ -146,7 +147,7 @@ class AddEmp extends Component {
         return (
             <div className="add-user">
                 <div className="addUser_header">
-                    <h5 className="new_user">NEW USER</h5>
+                    <h5 className="new_user">NEW SUPERVISOR</h5>
                 </div>
                 <div className="addUser_body">
                     <Form onSubmit={this.handleSubmit} >
@@ -187,6 +188,25 @@ class AddEmp extends Component {
                         </Form.Group>
 
 
+                        <Form.Group className="formGroup">
+                            <Form.Label className="formLabel">Team</Form.Label>
+
+
+                            <Autocomplete
+                                options={this.state.employees}
+                                onSelection={this.setSelection}
+                            />
+                        </Form.Group>
+
+                        <div className={"selection_container"}>
+                            {
+                                this.state.team && this.state.team.map((member) => {
+                                    return <div className="selected"><span>{member.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{cursor:"pointer"}} onClick={()=> this.removeMonitor(member.id)}>X</span></div>
+                                })
+                            }
+                        </div>
+
+
 
                         <br />
                         <Form.Group as={Row}>
@@ -220,4 +240,4 @@ const mapDispatchToProps = (dispatch) => {
         reset: (mail) => dispatch(reset(mail))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AddEmp);
+export default connect(mapStateToProps, mapDispatchToProps)(AddSup);

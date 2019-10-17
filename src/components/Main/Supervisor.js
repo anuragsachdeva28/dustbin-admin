@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from "react";
-import "./Employee.css";
+import "./Supervisor.css";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import {connect} from "react-redux";
@@ -44,14 +44,14 @@ const modalStyle2 = function () {
     };
 };
 
-class Employee extends Component {
+class Supervisor extends Component {
     state = {
         name:"",
         description:"",
         showModal2: false,
         editLoading: false,
         deleteLoader:false,
-        aT: (this.props.auth.stsTokenManager)?this.props.auth.stsTokenManager.accessToken:""
+        aT: (localStorage.getItem("token"))?localStorage.getItem("token"):""
     }
 
     close2 = () => {
@@ -128,9 +128,9 @@ class Employee extends Component {
 
 
     componentDidMount() {
-        const url_emp= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/"+this.props.match.params.cid+"/employees/";
-        // console.log(url,"cddscsdCds",this.props);
-        fetch(url_emp,{
+        const url= "https://sdmp-jss.herokuapp.com/api/ward/"+this.props.match.params.wid;
+        // console.log("cddscsdCds",this.props);
+        fetch(url,{
             headers: {
                 Authorization: "Bearer "+this.state.aT
             }
@@ -139,13 +139,14 @@ class Employee extends Component {
             .then(data => {
 
                 console.log("emp list this ",data);
-                const arr = data.res;
-                this.setState({ employees: arr })
-                if(!data.res) {
-                    this.setState({
-                        employees: []
-                    })
-                }
+                const arr = data.supervisors;
+                console.log(arr);
+                this.setState({ supervisors: arr })
+                // if(!data.res) {
+                //     this.setState({
+                //         supervisors: []
+                //     })
+                // }
 
 
 
@@ -153,32 +154,13 @@ class Employee extends Component {
 
             .catch(err => console.log(err))
 
-        const url_client= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/"+this.props.match.params.cid;
-        // console.log(url,"cddscsdCds",this.props);
-        fetch(url_client,{
-            headers: {
-                Authorization: "Bearer "+this.state.aT
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
 
-                console.log("clientttttttt",data);
-                const name = data.res.client.name;
-                const description = (data.res.client.description) ? data.res.description : " ";
-                this.setState({ name, description })
-
-
-
-            })
-
-            .catch(err => console.log(err))
     }
 
     componentWillReceiveProps(nextProps) {
-        const url_emp= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/"+nextProps.match.params.cid+"/employees/";
-        // console.log(url,"cddscsdCds",this.props);
-        fetch(url_emp,{
+        const url= "https://sdmp-jss.herokuapp.com/api/ward/"+nextProps.match.params.wid;
+        // console.log("cddscsdCds",this.props);
+        fetch(url,{
             headers: {
                 Authorization: "Bearer "+this.state.aT
             }
@@ -187,11 +169,11 @@ class Employee extends Component {
             .then(data => {
 
                 console.log("emp list this ",data);
-                const arr = data.res;
-                this.setState({ employees: arr })
-                if(!data.res) {
+                const arr = data.supervisors;
+                this.setState({ supervisors: arr })
+                if(!data.supervisors) {
                     this.setState({
-                        employees: []
+                        supervisors: []
                     })
                 }
 
@@ -201,26 +183,6 @@ class Employee extends Component {
 
             .catch(err => console.log(err))
 
-        const url_client= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/"+nextProps.match.params.cid;
-        // console.log(url,"cddscsdCds",this.props);
-        fetch(url_client,{
-            headers: {
-                Authorization: "Bearer "+this.state.aT
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-
-                console.log("clientttttttt",data);
-                const name = data.res.client.name;
-                const description = (data.res.client.description) ? data.res.description : " ";
-                this.setState({ name, description })
-
-
-
-            })
-
-            .catch(err => console.log(err))
     }
 
     renderBackdrop(props) {
@@ -323,12 +285,12 @@ class Employee extends Component {
 
             <div className="empAside">
                 <div className="userHeader">
-                    {(role==="admin" || role==="manager") && <Link to="./add">
+                    <Link to="./add">
                         <button className="add_user" type="button">
                             {" "}
                             <span>+</span> Add User{" "}
                         </button>
-                    </Link>}
+                    </Link>
                 </div>
 
                 <div className="userBody">
@@ -338,7 +300,7 @@ class Employee extends Component {
                     </p>
                     <br />
 
-                    {this.state.employees && this.state.employees.length!==0 && <div className="client-tableHeader">
+                    {this.state.supervisors && this.state.supervisors.length!==0 && <div className="client-tableHeader">
                         <div className="num vert-align"></div>
                         <div className="username light vert-align">User Name</div>
                         {/*<div className="phone">Phone No.</div>*/}
@@ -351,7 +313,7 @@ class Employee extends Component {
                         {/*<div className="arrow"></div>*/}
                     </div>}
 
-                    {!this.state.employees && <div className="client-tableHeader">
+                    {!this.state.supervisors && <div className="client-tableHeader">
                         <div className="num vert-align"><lines className="shine task_holder_num"></lines></div>
                         <div className="username light vert-align"><lines className="shine task_holder_name"></lines></div>
                         {/*<div className="phone"><lines className="shine task_holder"></lines></div>*/}
@@ -362,30 +324,30 @@ class Employee extends Component {
                         {/*<div className="arrow"></div>*/}
                     </div>}
 
-                    {this.state.employees && this.state.employees.length===0 && <div className={"emp-div"}><img className="no_emp" src={NO_EMPLOYEE} alt="logo" /></div> }
-                    { this.state.employees && this.state.employees.length===0 && <div className={"no_emp-div"}><p className={"no_projemp"}>No Employees added!!!</p></div>}
+                    {this.state.supervisors && this.state.supervisors.length===0 && <div className={"emp-div"}><img className="no_emp" src={NO_EMPLOYEE} alt="logo" /></div> }
+                    { this.state.supervisors && this.state.supervisors.length===0 && <div className={"no_emp-div"}><p className={"no_projemp"}>No Employees added!!!</p></div>}
 
 
                     <div className="tableContainer">
 
                         {
-                            this.state.employees && this.state.employees.map( (employee,index) =>{
-                                let editName = employee.name;
+                            this.state.supervisors && this.state.supervisors.map( (employee,index) =>{
+                                let name = employee.firstName+" "+employee.lastName;
                                 let editId = employee.id;
                                 let editNum = employee.number;
                                 let editEmail = employee.email;
                                 let editRole = employee.role;
-                                let empRole = (employee.role.admin)? "Admin" : (employee.role.manager)? "Manager" : (employee.role.editor)? "Editor" : "Viewer";
+                                // let empRole = (employee.role.admin)? "Admin" : (employee.role.manager)? "Manager" : (employee.role.editor)? "Editor" : "Viewer";
                                     return <div className="client-tableBody" key={index}>
                                     <div className="num vert-align">{index+1}</div>
-                                    <div className="username vert-align">{ employee.name }</div>
+                                    <div className="username vert-align">{ name }</div>
                                     {/*<div className="phone">{ (employee.number)? employee.number : "NA" }</div>*/}
                                     <div className="email vert-align">{ employee.email }</div>
-                                    <div className="role vert-align">{ empRole }</div>
+                                    {/*<div className="role vert-align">{ empRole }</div>*/}
 
-                                    {(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open2({editName, editId, editNum, editEmail, editRole})}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></div>}
-                                    {(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.resetPass(employee.email)}><i className="fa fa-key" aria-hidden="true" title="Reset Password"></i></div>}
-                                    {(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open3(employee.id)}><i className="fa fa-trash" aria-hidden="true" title="Delete"></i></div>}
+                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open2({editName, editId, editNum, editEmail, editRole})}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></div>}*/}
+                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.resetPass(employee.email)}><i className="fa fa-key" aria-hidden="true" title="Reset Password"></i></div>}*/}
+                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open3(employee.id)}><i className="fa fa-trash" aria-hidden="true" title="Delete"></i></div>}*/}
                                 </div>
                             }
 
@@ -480,5 +442,5 @@ const mapDispatchToProps = (dispatch) => {
         reset: (mail) => dispatch(reset(mail))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Employee);
+export default connect(mapStateToProps, mapDispatchToProps)(Supervisor);
 

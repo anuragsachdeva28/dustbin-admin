@@ -46,8 +46,9 @@ class AddWard extends Component {
           if(data.error){
             this.setState({
               loading:false,
-              name:""
-            })
+              name:"",
+              description: ""
+            });
             console.log(data.error)
           }
 

@@ -3,19 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5b5c34a2-f672-44e2-99d4-552f43305f8f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard_2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddEmp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddEmp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddProject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/AddEmp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddSup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/AddEmp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddSup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/AddWard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddWard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Supervisor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Supervisor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Projects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/SupervisorWard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/SupervisorWard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn/SignIn.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +30,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="25" />
-    <option name="width" value="1366" />
-    <option name="height" value="743" />
   </component>
   <component name="ProjectId" id="1S3RbefddLUgXv5JqExDBwAUIIX" />
   <component name="PropertiesComponent">
@@ -77,7 +69,9 @@
       <workItem from="1569572841095" duration="23601000" />
       <workItem from="1569865226372" duration="8873000" />
       <workItem from="1570017881748" duration="4720000" />
-      <workItem from="1570790369342" duration="2378000" />
+      <workItem from="1570790369342" duration="9291000" />
+      <workItem from="1571036266528" duration="1292000" />
+      <workItem from="1571125938919" duration="8856000" />
     </task>
     <servers />
   </component>
@@ -89,7 +83,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

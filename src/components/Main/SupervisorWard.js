@@ -1,19 +1,19 @@
 import React, {Component, Fragment} from "react";
-import "./Employee.css";
+import "./Supervisor.css";
 // import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import {connect} from "react-redux";
 import {Redirect, Route} from "react-router-dom";
 import Dashboard_2 from "../Dashboard/Dashboard_2";
 import AddWard from "./AddWard";
-import Employee from "./Employee"
-import AddEmp from "./AddEmp";
+import Supervisor from "./Supervisor"
+import AddEmp from "./AddSup";
 
 class SupervisorWard extends Component {
     state = {
         name:"",
         description:"",
-        employees:[],
+        supervisors:[],
 
     }
 
@@ -32,7 +32,7 @@ class SupervisorWard extends Component {
                     <Route path="/supervisors/wards/" component={Dashboard_2} />
                 </div>
                 <Route path="/supervisors/wards/add/" component={AddWard} />
-                <Route path="/supervisors/wards/:wid/supervisors/" exact component={Employee} />
+                <Route path="/supervisors/wards/:wid/supervisors/" exact component={Supervisor} />
                 <Route path="/supervisors/wards/:wid/supervisors/add/" component={AddEmp} />
             </Fragment>
 
