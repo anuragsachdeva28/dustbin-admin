@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b5c34a2-f672-44e2-99d4-552f43305f8f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddSup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddSup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Autocomplete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Supervisor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Supervisor.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +63,7 @@
       <workItem from="1571036266528" duration="1292000" />
       <workItem from="1571125938919" duration="23597000" />
       <workItem from="1571497261579" duration="1108000" />
+      <workItem from="1571649785737" duration="266000" />
     </task>
     <servers />
   </component>

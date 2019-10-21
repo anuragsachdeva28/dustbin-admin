@@ -19,7 +19,7 @@ class Autocomplete extends Component {
     })
     const name = document.getElementById("empName").value;
     if (name !== "") {
-      let username = "";
+      let id = "";
       let email = "";
       let entered = false;
       console.log("see this", name);
