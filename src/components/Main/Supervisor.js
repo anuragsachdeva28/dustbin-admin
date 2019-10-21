@@ -51,6 +51,7 @@ class Supervisor extends Component {
         showModal2: false,
         editLoading: false,
         deleteLoader:false,
+
         aT: (localStorage.getItem("token"))?localStorage.getItem("token"):""
     }
 
@@ -89,6 +90,7 @@ class Supervisor extends Component {
         console.log(mail,"this is the mail to which the mail is being send")
         window.alert("Reset Password link sent");
     }
+
 
     deleteEmp = () => {
         // console.log(id);

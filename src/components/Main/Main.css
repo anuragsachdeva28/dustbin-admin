@@ -297,7 +297,7 @@ input[type="file"] {
 
 .formLabel {
   color: #6053f5;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   padding-right: 75%;
 }
@@ -316,7 +316,7 @@ input[type="file"] {
   max-width: 620px;
 }
 .formGroup {
-  margin-top: 6vh;
+  margin-top: 2vh;
 }
 
 .addMember {

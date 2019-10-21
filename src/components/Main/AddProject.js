@@ -102,21 +102,21 @@ class AddProject extends Component {
     })
   }
 
-  setSelection = (val) => {
-    // var joined = this.state.team.push(val);
-    let array = [...this.state.team];
-    let index=-1;
-    for (let i=0;i<array.length;i++){
-      if(val.id===array[i].id){
-        index = i;
-      }
-    }
-    if(index===-1){
-      this.setState({
-        team:[...this.state.team,val]
-      })
-    }
-  }
+  // setSelection = (val) => {
+  //   // var joined = this.state.team.push(val);
+  //   let array = [...this.state.team];
+  //   let index=-1;
+  //   for (let i=0;i<array.length;i++){
+  //     if(val.id===array[i].id){
+  //       index = i;
+  //     }
+  //   }
+  //   if(index===-1){
+  //     this.setState({
+  //       team:[...this.state.team,val]
+  //     })
+  //   }
+  // }
 
   removeMonitor = (id) => {
     console.log(id);
@@ -174,10 +174,10 @@ class AddProject extends Component {
             <Form.Label className="formLabel">Team</Form.Label>
 
 
-            <Autocomplete
-              options={this.state.employees}
-              onSelection={this.setSelection}
-            />
+            {/*<Autocomplete*/}
+            {/*  options={this.state.employees}*/}
+            {/*  onSelection={this.setSelection}*/}
+            {/*/>*/}
           </Form.Group>
 
           <div className={"selection_container"}>

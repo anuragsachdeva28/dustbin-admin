@@ -7,7 +7,8 @@ import { Button, Form, Row } from "react-bootstrap";
 class Autocomplete extends Component {
   state = {
     name: "",
-    exist:false
+    exist:false,
+    options:[]
   };
 
 
@@ -18,7 +19,7 @@ class Autocomplete extends Component {
     })
     const name = document.getElementById("empName").value;
     if (name !== "") {
-      let id = "";
+      let username = "";
       let email = "";
       let entered = false;
       console.log("see this", name);
@@ -44,6 +45,32 @@ class Autocomplete extends Component {
     }
   };
 
+  getSupervisor = () => {
+    const url = `https://sdmp-jss.herokuapp.com/api/user/search?query=${this.state.name}`;
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer "+localStorage.getItem('token')
+      }
+    })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          this.setState({
+            options: data
+          })
+        })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    }, () => {
+      if (this.state.name && this.state.name.length >=1) {
+        this.getSupervisor()
+      }
+    })
+  }
+
   focus = () => {
     this.setState({
       exist:false
@@ -56,28 +83,31 @@ class Autocomplete extends Component {
     return (
       <React.Fragment>
         <datalist id={"data-list"} onautocomplete={this.selected}>
-          {this.props.options &&
-            this.props.options.map((employee, id) => (
+          {this.state.options &&
+            this.state.options.map((employee, id) => (
               <option
                 data-id={employee.id}
-                data-name={employee.name}
-                data-email={employee.email}
+
                 className="opt"
-                value={employee.name}
+                value={employee.username}
                 key={id}
               >
-                {`      ${employee.email}`}
+                {/*{`${employee.firstName} ${employee.lastName}`}*/}
+                {(employee.lastName)?`${employee.firstName} ${employee.lastName}`:`${employee.firstName}`}
               </option>
             ))}
         </datalist>
         <Form.Group as={Row} className={"alignment"}>
           <Form.Control
+              name='name'
+              value={this.state.name}
             type="text"
             placeholder="Add monitors"
             className="addMember"
             list={"data-list"}
             id={"empName"}
             onFocus={this.focus}
+            onChange={this.handleChange}
           />
           <Button className={"add-monitor-bt"} variant="secondary" size="sm" onClick={this.addChange}>
             <b>add</b>

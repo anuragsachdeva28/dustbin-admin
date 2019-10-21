@@ -12,6 +12,10 @@ class AddSup extends Component {
         name: "",
         email: "",
         password: "",
+        team:[],
+        employees:[{
+
+        }],
         selectedName: "viewer",
         loading:false
     }
@@ -38,6 +42,23 @@ class AddSup extends Component {
     handleCancel = () => {
         window.location.href = "/supervisors/wards/"+this.props.match.params.cid+"/supervisors/";
     }
+
+    setSelection = (val) => {
+        // var joined = this.state.team.push(val);
+        let array = [...this.state.team];
+        let index=-1;
+        for (let i=0;i<array.length;i++){
+            if(val.id===array[i].id){
+                index = i;
+            }
+        }
+        if(index===-1){
+            this.setState({
+                team:[...this.state.team,val]
+            })
+        }
+    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -117,25 +138,7 @@ class AddSup extends Component {
     }
     render() {
         let users = [];
-        let role = localStorage.getItem("role");
 
-
-        if (role==="admin"){
-            users = [
-                { id: 1, name: 'admin'},
-                { id: 2, name: 'manager' },
-                { id: 3, name: 'editor' },
-                { id: 4, name: 'viewer' },
-
-            ]
-        }
-        else if(role==="manager"){
-            users = [
-                { id: 3, name: 'editor' },
-                { id: 4, name: 'viewer' },
-
-            ]
-        }
 
 
         const { selectedName } = this.state;
@@ -143,7 +146,7 @@ class AddSup extends Component {
         console.log(selectedName)
         // let selectedUser = users[selectedId-1].name;
         // console.log(selectedUser)
-        if (role==="viewer" || role==="editor") return <Redirect to={"/supervisors/wards/"+this.props.match.params.cid+"/supervisors/"} />
+        // if (role==="viewer" || role==="editor") return <Redirect to={"/supervisors/wards/"+this.props.match.params.cid+"/supervisors/"} />
         return (
             <div className="add-user">
                 <div className="addUser_header">
@@ -151,41 +154,7 @@ class AddSup extends Component {
                 </div>
                 <div className="addUser_body">
                     <Form onSubmit={this.handleSubmit} >
-                        <Form.Group as={Row}>
-                            <Form.Label column sm="2" className="userDetail">
-                                Name
-                            </Form.Label>
-                            <Col sm="4">
-                                <Form.Control id={"name"} type="text" placeholder="" className="userfield" onChange={this.handleChange} value={this.state.name} />
-                            </Col>
-                        </Form.Group>
 
-                        <Form.Group as={Row} controlId="formBasicEmail">
-                            <Form.Label column sm="2" className="userDetail">
-                                Email Id
-                            </Form.Label>
-                            <Col sm="4">
-                                <Form.Control id={"email"} type="email" placeholder="" className="userfield" onChange={this.handleChange} value={this.state.email} />
-                            </Col>
-                        </Form.Group>
-
-                        <Form.Group as={Row} controlId="formBasicPassword">
-                            <Form.Label column sm="2" className="userDetail">
-                                Role
-                            </Form.Label>
-                            <Dropdown onSelect={this.onSelect} id="d" style={{ marginLeft: 1.1 + "%" }}>
-                                <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{ borderRadius: 20 + "px" }}>
-                                    {selectedName}
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    {users.map(user => (
-                                        <Dropdown.Item eventKey={user.name} key={user.id}>
-                                            {user.name}
-                                        </Dropdown.Item>
-                                    ))}
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </Form.Group>
 
 
                         <Form.Group className="formGroup">
