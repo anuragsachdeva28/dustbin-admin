@@ -118,22 +118,22 @@ class AddProject extends Component {
   //   }
   // }
 
-  removeMonitor = (id) => {
-    console.log(id);
-    let array = [...this.state.team];
-    let index=null;
-    for(let i=0; i<array.length;i++)
-    {
-      if(array[i].id===id) {
-        index=i;
-      }
-    }
-    if(index!==null){
-      array.splice(index,1);
-      this.setState({
-        team:array
-      })
-    }
+  removeMonitor = (name) => {
+    console.log(name);
+    // let array = [...this.state.team];
+    // let index=null;
+    // for(let i=0; i<array.length;i++)
+    // {
+    //   if(array[i].name===name) {
+    //     index=i;
+    //   }
+    // }
+    // if(index!==null){
+    //   array.splice(index,1);
+    //   this.setState({
+    //     team:array
+    //   })
+    // }
   }
 
   render() {
@@ -180,13 +180,13 @@ class AddProject extends Component {
             {/*/>*/}
           </Form.Group>
 
-          <div className={"selection_container"}>
-            {
-              this.state.team && this.state.team.map((member) => {
-                return <div className="selected"><span>{member.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{cursor:"pointer"}} onClick={()=> this.removeMonitor(member.id)}>X</span></div>
-              })
-            }
-          </div>
+          {/*<div className={"selection_container"}>*/}
+          {/*  {*/}
+          {/*    this.state.team && this.state.team.map((member) => {*/}
+          {/*      return <div className="selected"><span>{member.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{cursor:"pointer"}} onClick={()=> this.removeMonitor(member.id)}>X</span></div>*/}
+          {/*    })*/}
+          {/*  }*/}
+          {/*</div>*/}
 
 
 

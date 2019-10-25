@@ -19,29 +19,24 @@ class Autocomplete extends Component {
     })
     const name = document.getElementById("empName").value;
     if (name !== "") {
-      let id = "";
-      let email = "";
       let entered = false;
       console.log("see this", name);
       const keys = document.querySelectorAll("#data-list option");
-      // console.log(keys)
       keys.forEach((key, item) => {
         if (key.getAttribute("value").toString().toLowerCase() === name.toString().toLowerCase()) {
           console.log("here 1");
-          id = key.getAttribute("data-id");
-          console.log(key.getAttribute("data-email"));
-          email = key.getAttribute("data-email");
-          this.props.onSelection({ name, id, email });
+          this.props.onSelection({ name });
           entered = true;
         }
-
       });
       if(!entered){
         this.setState({
           exist:true
         })
       }
-      document.getElementById("empName").value = "";
+      this.setState({
+        name:""
+      })
     }
   };
 

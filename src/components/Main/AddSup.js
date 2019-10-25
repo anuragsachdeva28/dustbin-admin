@@ -48,7 +48,7 @@ class AddSup extends Component {
         let array = [...this.state.team];
         let index=-1;
         for (let i=0;i<array.length;i++){
-            if(val.id===array[i].id){
+            if(val===array[i]){
                 index = i;
             }
         }
@@ -59,68 +59,53 @@ class AddSup extends Component {
         }
     }
 
+    removeMonitor = (name) => {
+        console.log(name);
+        let array = [...this.state.team];
+        let index=null;
+        for(let i=0; i<array.length;i++)
+        {
+          if(array[i].name===name) {
+            index=i;
+          }
+        }
+        if(index!==null){
+          array.splice(index,1);
+          this.setState({
+            team:array
+          })
+        }
+    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
             loading:true
         })
-        let name = this.state.name;
-        let email = this.state.email;
-        let role={}
-        if(this.state.selectedName==="viewer"){
-            role = {
-                "admin":false,
-                "manager":false,
-                "editor":false,
-                "viewer":true
-            }
-        }
-        else if(this.state.selectedName==="editor"){
-            role = {
-                "admin":false,
-                "manager":false,
-                "editor":true,
-                "viewer":true
-            }
-        }
-        else if(this.state.selectedName==="manager"){
-            role = {
-                "admin":false,
-                "manager":true,
-                "editor":true,
-                "viewer":true
-            }
-        }
-        else{
-            role = {
-                "admin":true,
-                "manager":true,
-                "editor":true,
-                "viewer":true
-            }
-        }
 
-        let dataObj = { name, email, role };
+        let sups = [];
 
-        const url= "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/"+this.props.match.params.cid+"/employees";
-        // console.log(url);
+        this.state.team && this.state.team.forEach((sup) => {
+            sups.push(sup.name);
+        })
+        console.log(sups);
+
+        const url = `https://sdmp-jss.herokuapp.com/api/ward/${this.props.match.params.wid}/supervisor?username=${sups.toString()}`;
+        console.log(url);
         fetch(url,{
             headers: {
-                Authorization: "Bearer "+this.props.auth.stsTokenManager.accessToken,
-                "Content-Type":"application/json"
+                Authorization: "Bearer "+localStorage.getItem('token')
             },
-            method: 'POST',
-            body: JSON.stringify(dataObj)
+            method: 'POST'
         })
             .then(res => res.json())
-            .then(async data => {
+            .then(data => {
 
-                console.log("anurag",data.error);
-                // window.location.reload(false);
+                console.log("anurag",data);
                 if(data.error){
                     console.log("errrrrrrrrrrror")
-                    this.myfunc();
+
                     this.setState({
                         loading:false,
                         name:"",
@@ -128,8 +113,8 @@ class AddSup extends Component {
                     })
                 }
                 else {
-                    await this.props.reset(this.state.email)
-                    window.location.href = "/supervisors/wards/"+this.props.match.params.cid+"/supervisors/";
+
+                    // window.location.href = "/supervisors/wards/"+this.props.match.params.wid+"/supervisors/";
                 }
             })
 
@@ -169,8 +154,8 @@ class AddSup extends Component {
 
                         <div className={"selection_container"}>
                             {
-                                this.state.team && this.state.team.map((member) => {
-                                    return <div className="selected"><span>{member.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{cursor:"pointer"}} onClick={()=> this.removeMonitor(member.id)}>X</span></div>
+                                this.state.team && this.state.team.map((member,id) => {
+                                    return <div key={id} className="selected"><span>{member.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{cursor:"pointer"}} onClick={() => this.removeMonitor(member.name)}>X</span></div>
                                 })
                             }
                         </div>
