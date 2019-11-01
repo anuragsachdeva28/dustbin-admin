@@ -5,7 +5,7 @@ import {Redirect, Route} from "react-router-dom";
 
 
 import "./Main.css";
-import Projects from "./Projects";
+import Dustbins from "./Dustbins";
 import AddProject from "./AddProject";
 import Tasks from './Tasks';
 import Employee from './Supervisor';
@@ -27,11 +27,11 @@ class Main extends Component {
         </div>
 
         <Route path="/wards/add" component={AddWard} />
-        <Route path="//wards/:wid/projects" component={Projects} />
-        {/*<Route path="/projects/" component={Projects} />*/}
-        <Route path="/wards/:wid/projects/add" component={AddProject} />
+        <Route path="/wards/:wid/dustbins" component={Dustbins} />
+
+        <Route path="/wards/:wid/dustbins/add" component={AddProject} />
         {/*<Route path="/projects/add/" component={AddProject} />*/}
-        <Route path="/wards/:wid/projects/:pid/tasks/" component={Tasks} />
+        <Route path="/wards/:wid/dustbins/:pid/logs/" component={Tasks} />
         {/*<Route path="/projects/:pid/tasks/" component={Tasks} />*/}
       </div>
     );

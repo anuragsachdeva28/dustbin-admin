@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b5c34a2-f672-44e2-99d4-552f43305f8f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/AddProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/AddSup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/AddSup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Autocomplete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dustbins.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +68,10 @@
       <workItem from="1571125938919" duration="23597000" />
       <workItem from="1571497261579" duration="1108000" />
       <workItem from="1571649785737" duration="266000" />
-      <workItem from="1571840918692" duration="5740000" />
+      <workItem from="1571840918692" duration="7012000" />
+      <workItem from="1572167065074" duration="595000" />
+      <workItem from="1572531417953" duration="607000" />
+      <workItem from="1572591412768" duration="4170000" />
     </task>
     <servers />
   </component>

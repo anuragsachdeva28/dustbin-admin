@@ -7,26 +7,25 @@ import { connect } from "react-redux";
 import Pic from "../../no_proj.png";
 import Icon from '../Sidebar/Icon/Icon';
 
-class Projects extends Component {
-    state = {
+class Dustbins extends Component {
+    state = {}
 
-    }
     componentDidMount() {
-        console.log(this.props, "projects pe call kiya hua props")
-        const url = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + this.props.match.params.cid + "/projects/";
+        // console.log(this.props, "projects pe call kiya hua props")
+        const url = `https://sdmp-jss.herokuapp.com/api/bin?wardId=${this.props.match.params.wid}`;
         // console.log(url);
         fetch(url, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
             .then(data => {
 
-                // console.log("cdcdsc",data);
+                console.log("cdcdsc",data.content);
 
-                const arr = data.res.projects;
-                this.setState({ projects: arr })
+                const arr = data.content;
+                this.setState({ dustbins: arr })
 
             })
 
@@ -35,22 +34,22 @@ class Projects extends Component {
     componentWillReceiveProps(nextProps) {
         console.log("new props")
         this.setState({
-            projects: null
+            dustbins: null
         });
-        const url = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + nextProps.match.params.cid + "/projects/";
+        const url = `https://sdmp-jss.herokuapp.com/api/bin?wardId=${nextProps.match.params.wid}`;
         // console.log(url);
         fetch(url, {
             headers: {
-                Authorization: "Bearer " + nextProps.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
             .then(data => {
 
-                // console.log("cdcdsc",data);
+                console.log("cdcdsc",data.content);
 
-                const arr = data.res.projects;
-                this.setState({ projects: arr })
+                const arr = data.content;
+                this.setState({ dustbins: arr })
 
             })
 
@@ -65,10 +64,10 @@ class Projects extends Component {
             <div className="projAside">
                 <div className="projHeader">
                     <div className="projHeaderName">
-                        <h5 className="projList">DEXPERT</h5>
+                        <h5 className="projList">DUSTBINS</h5>
                     </div>
-                    {(role === "admin" || role === "manager") && <div className="addIcon">
-                        <Link to={"/wards/" + this.props.match.params.cid + "/projects/add/"} >
+                    {<div className="addIcon">
+                        <Link to={"/wards/" + this.props.match.params.cid + "/dustbins/add/"} >
                             <div className="addIconInside">
                                 {/* <span>+</span> */}
                                 <Icon
@@ -104,7 +103,7 @@ class Projects extends Component {
 
                     {
                         this.state.projects && this.state.projects.map((project, key) =>
-                            <NavLink to={"/wards/" + this.props.match.params.cid + "/projects/" + (project.id) + "/tasks"} key={key} activeClassName={"active"} >
+                            <NavLink to={"/wards/" + this.props.match.params.cid + "/dustbins/" + (project.id) + "/logs"} key={key} activeClassName={"active"} >
                                 {console.log(project)}
                                 <CardList
                                     date={project.creationTime ? formatDate(project.creationTime) : "NA"}
@@ -126,9 +125,9 @@ class Projects extends Component {
 const formatDate = (date) => {
     date = new Date(date);
 
-    var day = date.getDate();
-    var monthIndex = date.getMonth() + 1;
-    var year = date.getFullYear();
+    let day = date.getDate();
+    let monthIndex = date.getMonth() + 1;
+    let year = date.getFullYear();
 
     monthIndex += "";
     if (monthIndex.length == 1)
@@ -146,4 +145,4 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth
     }
 }
-export default connect(mapStateToProps)(Projects);
+export default connect(mapStateToProps)(Dustbins);

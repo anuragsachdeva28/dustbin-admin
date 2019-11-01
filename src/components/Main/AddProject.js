@@ -46,7 +46,7 @@ class AddProject extends Component {
   }
 
   handleCancel = () => {
-    window.location.href = "/wards/"+this.props.match.params.cid+"/projects/";
+    window.location.href = "/wards/"+this.props.match.params.cid+"/dustbins/";
   }
 
   handleSubmit = (e) => {
@@ -84,7 +84,7 @@ class AddProject extends Component {
             })
           }
           else {
-            window.location.href = "/wards/"+this.props.match.params.cid+"/projects/";
+            window.location.href = "/wards/"+this.props.match.params.cid+"/dustbins/";
           }
         })
 
@@ -195,6 +195,7 @@ class AddProject extends Component {
           <br />
           <Form.Group as={Row}>
             <Col sm="3">
+              {/*To be reviewed*/}
               <Link to="/projects/">
                 <Button onClick={this.handleCancel} variant="secondary" size="sm" className={`cancel`}>
                   CANCEL
