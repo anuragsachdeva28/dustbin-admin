@@ -6,13 +6,13 @@ const CardList = (props) => {
         <Card className="cardLayout" >
             <Card.Body>
                 <Card.Subtitle className="mb-2 text-muted cardSub">created on: {props.date}</Card.Subtitle>
-                <Card.Title className="cardTitle">{props.title}</Card.Title>
+                <Card.Title className="cardTitle">{`BIN : ${props.title}`}</Card.Title>
 
                 <Card.Text className="cardText">
-                    {props.description}
+                    {`Landmark : ${(props.description) ? props.description : "NA"}`}
                 </Card.Text>
                 <div className="tag" >
-                    <span>{ (props.activeTask) ? props.activeTask : 0 } tasks active</span>
+                    <span>{ (props.activeTask) ? props.activeTask : 0 } % full</span>
                 </div>
             </Card.Body>
         </Card>

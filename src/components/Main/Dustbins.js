@@ -66,7 +66,7 @@ class Dustbins extends Component {
                     <div className="projHeaderName">
                         <h5 className="projList">DUSTBINS</h5>
                     </div>
-                    {<div className="addIcon">
+                    {(role === "admin" || role === "manager") && <div className="addIcon">
                         <Link to={"/wards/" + this.props.match.params.cid + "/dustbins/add/"} >
                             <div className="addIconInside">
                                 {/* <span>+</span> */}
@@ -86,7 +86,7 @@ class Dustbins extends Component {
 
 
                     {
-                        !this.state.projects && <Card className="cardLayout" >
+                        !this.state.dustbins && <Card className="cardLayout" >
                             <Card.Body>
 
                                 <Card.Subtitle className="mb-2 text-muted cardSub">created on: <lines className="shine date"></lines> </Card.Subtitle>
@@ -98,18 +98,18 @@ class Dustbins extends Component {
 
                     }
 
-                    {this.state.projects && this.state.projects.length === 0 && <div className={"no_proj-img"}><img src={Pic} alt="profile" /></div>}
-                    {this.state.projects && this.state.projects.length === 0 && <div className={"no_proj-div"}><p className={"no_proj"}>No projects added !!!</p></div>}
+                    {this.state.dustbins && this.state.dustbins.length === 0 && <div className={"no_proj-img"}><img src={Pic} alt="profile" /></div>}
+                    {this.state.dustbins && this.state.dustbins.length === 0 && <div className={"no_proj-div"}><p className={"no_proj"}>No dustbins added !!!</p></div>}
 
                     {
-                        this.state.projects && this.state.projects.map((project, key) =>
-                            <NavLink to={"/wards/" + this.props.match.params.cid + "/dustbins/" + (project.id) + "/logs"} key={key} activeClassName={"active"} >
-                                {console.log(project)}
+                        this.state.dustbins && this.state.dustbins.map((dustbin, key) =>
+                            <NavLink to={"/wards/" + this.props.match.params.wid + "/dustbins/" + (dustbin.id) + "/logs"} key={key} activeClassName={"active"} >
+                                {/*{console.log(dustbin)}*/}
                                 <CardList
-                                    date={project.creationTime ? formatDate(project.creationTime) : "NA"}
-                                    title={project.name}
-                                    description={project.description}
-                                    activeTask={project.taskActive}
+                                    date={dustbin.registeredAt ? formatDate(dustbin.registeredAt) : "NA"}
+                                    title={dustbin.bin}
+                                    description={dustbin.landmark}
+                                    activeTask={dustbin.percentage}
                                 />
                             </NavLink>
                         )
