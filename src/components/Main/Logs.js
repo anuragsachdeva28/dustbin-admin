@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Tasks.css';
+import './Logs.css';
 
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import DatePicker from "react-datepicker";
@@ -210,7 +210,7 @@ const modalStyle4 = function () {
 
 
 
-class Tasks extends Component {
+class Logs extends Component {
     constructor(props) {
         super(props);
         console.log("ye hai props inside constructor", this.props);
@@ -302,7 +302,7 @@ class Tasks extends Component {
         console.log(url_emp, "sending fetch emp request");
         fetch(url_emp, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
@@ -359,7 +359,7 @@ class Tasks extends Component {
         // console.log(url);
         fetch(url_project, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
@@ -386,7 +386,7 @@ class Tasks extends Component {
         // console.log(url);
         fetch(url_task, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
@@ -432,7 +432,7 @@ class Tasks extends Component {
         // console.log(url);
         fetch(url_project, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
@@ -459,7 +459,7 @@ class Tasks extends Component {
         // console.log(url);
         fetch(url_task, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         })
             .then(res => res.json())
@@ -525,7 +525,7 @@ class Tasks extends Component {
 
             fetch(url_task_id, {
                 headers: {
-                    Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken,
+                    Authorization: "Bearer " + localStorage.getItem('token'),
                     "Content-Type": "application/json"
                 },
                 method: 'PUT',
@@ -587,7 +587,7 @@ class Tasks extends Component {
         // console.log(url_task,"cddscsdCds",this.props);
         fetch(url_task, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken,
+                Authorization: "Bearer " + localStorage.getItem('token'),
                 "Content-Type": "application/json"
             },
             method: 'POST',
@@ -628,7 +628,7 @@ class Tasks extends Component {
 
         fetch(url_task_id, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken,
+                Authorization: "Bearer " + localStorage.getItem('token'),
                 "Content-Type": "application/json"
             },
             method: 'DELETE'
@@ -667,7 +667,7 @@ class Tasks extends Component {
         console.log(url, "sending put project", this.props);
         fetch(url, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken,
+                Authorization: "Bearer " + localStorage.getItem('token'),
                 "Content-Type": "application/json"
             },
             method: 'PUT',
@@ -773,7 +773,7 @@ class Tasks extends Component {
 
         fetch(url_task_id, {
             headers: {
-                Authorization: "Bearer " + this.props.auth.stsTokenManager.accessToken,
+                Authorization: "Bearer " + localStorage.getItem('token'),
                 "Content-Type": "application/json"
             },
             method: 'PUT',
@@ -942,7 +942,7 @@ class Tasks extends Component {
                     {items && items.length === 0 && <div className={"no_task-div"}><p className={"no_proj"}>No tasks added !!!</p></div>}
 
                     <Accordion>
-                        <SortableInfiniteList items={items} open={open} toOpen={this.open2} cid={this.props.match.params.cid} pid={this.props.match.params.pid} token={this.props.auth.stsTokenManager.accessToken} onSortEnd={this.onSortEnd} />
+                        <SortableInfiniteList items={items} open={open} toOpen={this.open2} cid={this.props.match.params.cid} pid={this.props.match.params.pid} token={localStorage.getItem('token')} onSortEnd={this.onSortEnd} />
                     </Accordion>
                     <Modal
                         onHide={this.close3}
@@ -1057,7 +1057,7 @@ class Tasks extends Component {
                             options={this.state.monitors}
                             pid={this.props.match.params.pid}
                             cid={this.props.match.params.cid}
-                            token={this.props.auth.stsTokenManager.accessToken}
+                            token={localStorage.getItem('token')}
                             fetchEmpLoader={this.state.fetchEmpLoader}
                             addToState={this.addToState}
                         />
@@ -1130,4 +1130,4 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth
     }
 }
-export default connect(mapStateToProps)(Tasks);
+export default connect(mapStateToProps)(Logs);

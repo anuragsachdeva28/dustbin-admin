@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5b5c34a2-f672-44e2-99d4-552f43305f8f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard_2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/CardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/CardList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Dustbins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dustbins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Logs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Logs.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,14 +22,21 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="25" />
+    <option name="width" value="1366" />
+    <option name="height" value="743" />
+  </component>
   <component name="ProjectId" id="1S3RbefddLUgXv5JqExDBwAUIIX" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/dustbin-admin" />
@@ -45,6 +57,16 @@
           <option name="name" value="StatusDashboardGroupingRule" />
         </RuleState>
       </list>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -69,7 +91,9 @@
       <workItem from="1571840918692" duration="7012000" />
       <workItem from="1572167065074" duration="595000" />
       <workItem from="1572531417953" duration="607000" />
-      <workItem from="1572591412768" duration="7523000" />
+      <workItem from="1572591412768" duration="8516000" />
+      <workItem from="1572619674461" duration="1640000" />
+      <workItem from="1572621548395" duration="596000" />
     </task>
     <servers />
   </component>
@@ -84,6 +108,20 @@
             <State>
               <option name="COLUMN_ORDER" />
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>

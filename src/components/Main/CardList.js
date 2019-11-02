@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
 const CardList = (props) => {
-    console.log(props);
+    // console.log(props);
     return(
         <Card className="cardLayout" >
             <Card.Body>

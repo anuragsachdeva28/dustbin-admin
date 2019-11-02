@@ -7,7 +7,7 @@ import {Redirect, Route} from "react-router-dom";
 import "./Main.css";
 import Dustbins from "./Dustbins";
 import AddProject from "./AddProject";
-import Tasks from './Tasks';
+import Tasks from './Logs';
 import Employee from './Supervisor';
 import AddEmp from './AddSup';
 import Dashboard from "../Dashboard/Dashboard";

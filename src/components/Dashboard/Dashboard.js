@@ -49,7 +49,7 @@ class Dashboard extends Component{
 
         return (
             <Fragment>
-                <p className="para_client" >Client List</p>
+                <p className="para_client" >Ward List</p>
                 <br />
                 <Link to={"/wards/add/"}><button className="add_new" type="button"> <span>+</span>&nbsp;&nbsp; add new </button></Link>
                 <br />

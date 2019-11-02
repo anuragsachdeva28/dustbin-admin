@@ -103,13 +103,13 @@ class Dustbins extends Component {
 
                     {
                         this.state.dustbins && this.state.dustbins.map((dustbin, key) =>
-                            <NavLink to={"/wards/" + this.props.match.params.wid + "/dustbins/" + (dustbin.id) + "/logs"} key={key} activeClassName={"active"} >
+                            <NavLink to={"/wards/" + this.props.match.params.wid + "/dustbins/" + (dustbin.bin) + "/logs"} key={key} activeClassName={"active"} >
                                 {/*{console.log(dustbin)}*/}
                                 <CardList
                                     date={dustbin.registeredAt ? formatDate(dustbin.registeredAt) : "NA"}
                                     title={dustbin.bin}
                                     description={dustbin.landmark}
-                                    activeTask={dustbin.percentage}
+                                    activeTask={dustbin.status.percentage}
                                 />
                             </NavLink>
                         )
