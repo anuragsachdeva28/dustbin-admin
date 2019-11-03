@@ -40,7 +40,7 @@ class AddSup extends Component {
     }
 
     handleCancel = () => {
-        window.location.href = "/supervisors/wards/"+this.props.match.params.cid+"/supervisors/";
+        window.location.href = "/supervisors/wards/"+this.props.match.params.wid+"/supervisors/";
     }
 
     setSelection = (val) => {
@@ -114,7 +114,7 @@ class AddSup extends Component {
                 }
                 else {
 
-                    // window.location.href = "/supervisors/wards/"+this.props.match.params.wid+"/supervisors/";
+                    window.location.href = "/supervisors/wards/"+this.props.match.params.wid+"/supervisors/";
                 }
             })
 

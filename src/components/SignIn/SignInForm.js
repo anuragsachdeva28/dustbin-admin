@@ -32,10 +32,10 @@ class SignInForm extends Component {
     console.log("The form was submitted with the following data:");
 
     this.props.signIn(this.state);
-    setTimeout( ()=>{
+    // setTimeout( ()=>{
 
       console.log(this.props);
-      if(this.props.auth.error){
+      if(await this.props.auth.error){
         this.setState({error:this.props.auth.error})
         this.setState({loading:false})
         this.setState({
@@ -51,7 +51,7 @@ class SignInForm extends Component {
 
       }
 
-    },4000)
+    // },4000)
 
     // console.log(this.props,"k,kj,kj,hj,hj,hj,")
 

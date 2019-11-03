@@ -130,6 +130,13 @@ class Supervisor extends Component {
 
 
     componentDidMount() {
+        if(this.props.location.state){
+            console.log("hum yaha hain")
+            localStorage.setItem("wardName",this.props.location.state.name);
+            localStorage.setItem("wardId",this.props.location.state.id);
+            localStorage.setItem("wardDesc",this.props.location.state.description);
+        }
+
         const url= "https://sdmp-jss.herokuapp.com/api/ward/"+this.props.match.params.wid;
         // console.log("cddscsdCds",this.props);
         fetch(url,{
@@ -155,6 +162,14 @@ class Supervisor extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if(nextProps.location.state){
+            localStorage.setItem("wardName",nextProps.location.state.name);
+            localStorage.setItem("wardId",nextProps.location.state.id);
+            localStorage.setItem("wardDesc",nextProps.location.state.description);
+        }
+        this.setState({
+            supervisors:null
+        })
         const url= "https://sdmp-jss.herokuapp.com/api/ward/"+nextProps.match.params.wid;
         // console.log("cddscsdCds",this.props);
         fetch(url,{
@@ -285,19 +300,19 @@ class Supervisor extends Component {
                     <Link to="./add">
                         <button className="add_user" type="button">
                             {" "}
-                            <span>+</span> Add User{" "}
+                            <span>+</span> Add Supervisor{" "}
                         </button>
                     </Link>
                 </div>
 
                 <div className="userBody">
                     {console.log(this.props,"anurag")}
-                    <h4 className="table-heading">{ (this.props.location.state.name) ? `Ward : ${this.props.location.state.name}` : <lines className="shine proj_name"></lines> }</h4>
+                    <h4 className="table-heading">{  `Ward : ${localStorage.getItem('wardName')}` }</h4>
                     <p>
-                        { (this.props.location.state ? `Ward-Id : ${this.props.location.state.id}` : <lines className="shine proj_desc"></lines>) }
+                        { `Ward-Id : ${localStorage.getItem('wardId')}` }
                     </p>
                     <p>
-                        { (this.props.location.state ? `  Description - ${this.props.location.state.description}` : <lines className="shine proj_desc"></lines>) }
+                        { `  Description - ${localStorage.getItem('wardDesc')}` }
                     </p>
                     <br />
 
