@@ -144,19 +144,14 @@ class Supervisor extends Component {
                 const arr = data.supervisors;
                 console.log(arr);
                 this.setState({ supervisors: arr })
-                // if(!data.res) {
-                //     this.setState({
-                //         supervisors: []
-                //     })
-                // }
-
-
-
+                if(!data.supervisors) {
+                    this.setState({
+                        supervisors: []
+                    })
+                }
             })
 
             .catch(err => console.log(err))
-
-
     }
 
     componentWillReceiveProps(nextProps) {

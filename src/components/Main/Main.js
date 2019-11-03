@@ -31,7 +31,7 @@ class Main extends Component {
 
         <Route path="/wards/:wid/dustbins/add" component={AddProject} />
         {/*<Route path="/projects/add/" component={AddProject} />*/}
-        <Route path="/wards/:wid/dustbins/:pid/logs/" component={Tasks} />
+        <Route path="/wards/:wid/dustbins/:did/logs/" component={Tasks} />
         {/*<Route path="/projects/:pid/tasks/" component={Tasks} />*/}
       </div>
     );

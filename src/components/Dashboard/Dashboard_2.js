@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import ContestList from './ContestList/ContestList';
 import ContestTypes from './ContestTypes/ContestTypes';
 import './dashboard.css';
-import { Link,NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {connect} from "react-redux";
 import '../Main/Main.css';
 

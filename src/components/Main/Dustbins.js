@@ -22,7 +22,7 @@ class Dustbins extends Component {
             .then(res => res.json())
             .then(data => {
 
-                console.log("cdcdsc",data.content);
+                console.log("cdcdsc",data);
 
                 const arr = data.content;
                 this.setState({ dustbins: arr })
@@ -32,28 +32,31 @@ class Dustbins extends Component {
             .catch(err => console.log(err))
     }
     componentWillReceiveProps(nextProps) {
-        console.log("new props")
-        this.setState({
-            dustbins: null
-        });
-        const url = `https://sdmp-jss.herokuapp.com/api/bin?wardId=${nextProps.match.params.wid}`;
-        // console.log(url);
-        fetch(url, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-
-                console.log("cdcdsc",data.content);
-
-                const arr = data.content;
-                this.setState({ dustbins: arr })
-
+        if(nextProps.match.params.wid!==this.props.match.params.wid){
+            console.log("new props")
+            this.setState({
+                dustbins: null
+            });
+            const url = `https://sdmp-jss.herokuapp.com/api/bin?wardId=${nextProps.match.params.wid}`;
+            // console.log(url);
+            fetch(url, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem('token')
+                }
             })
+                .then(res => res.json())
+                .then(data => {
 
-            .catch(err => console.log(err))
+                    console.log("cdcdsc",data);
+
+                    const arr = data.content;
+                    this.setState({ dustbins: arr })
+
+                })
+
+                .catch(err => console.log(err))
+        }
+
     }
 
     render() {
@@ -103,7 +106,12 @@ class Dustbins extends Component {
 
                     {
                         this.state.dustbins && this.state.dustbins.map((dustbin, key) =>
-                            <NavLink to={"/wards/" + this.props.match.params.wid + "/dustbins/" + (dustbin.bin) + "/logs"} key={key} activeClassName={"active"} >
+                            <NavLink to={{
+                                pathname: "/wards/" + this.props.match.params.wid + "/dustbins/" + (dustbin.bin) + "/logs",
+                                state: {
+                                    bin: dustbin
+                                }
+                            }} key={key} activeClassName={"active"} >
                                 {/*{console.log(dustbin)}*/}
                                 <CardList
                                     date={dustbin.registeredAt ? formatDate(dustbin.registeredAt) : "NA"}

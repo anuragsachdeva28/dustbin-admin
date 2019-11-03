@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import arrayMove from 'array-move';
 import Infinite from 'react-infinite';
 import { Accordion, Card, Button, Dropdown } from 'react-bootstrap';
-import { Modal, Form } from 'react-bootstrap';
+import { Modal, Form, Table } from 'react-bootstrap';
 import { connect } from "react-redux";
 import NO_Tasks from "../../no_task.png";
 import AddMonitors from "./AddMonitors";
@@ -354,37 +354,34 @@ class Logs extends Component {
     }
 
     componentDidMount() {
-        console.log("see props inside componentDidMount", this.props);
-        const url_project = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + this.props.match.params.cid + "/projects/" + this.props.match.params.pid;
-        // console.log(url);
-        fetch(url_project, {
+        console.log("see props inside componentDidMountqqqqqqqqqqqqqqqqqq", this.props);
+        const url_sup = "https://sdmp-jss.herokuapp.com/api/ward/"+this.props.match.params.wid;
+        // console.log("cddscsdCds",this.props);
+        fetch(url_sup,{
             headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
+                Authorization: "Bearer "+localStorage.getItem('token')
             }
         })
             .then(res => res.json())
             .then(data => {
 
-                // console.log("cdcdsc",data);
-
-                console.log(data.res);
-                const arr = data.res.project.team;
-                this.setState({
-                    project: {
-                        name: data.res.project.name,
-                        description: data.res.project.description
-                    },
-                    team: arr
-                })
-
+                console.log("emp list this ",data);
+                const arr = data.supervisors;
+                console.log(arr);
+                this.setState({ supervisors: arr })
+                if(!data.supervisors) {
+                    this.setState({
+                        supervisors: []
+                    })
+                }
             })
 
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
 
 
-        const url_task = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + this.props.match.params.cid + "/projects/" + this.props.match.params.pid + "/tasks/";
+        const url_logs = "https://sdmp-jss.herokuapp.com/api/bin/"+this.props.match.params.did+"/logs";
         // console.log(url);
-        fetch(url_task, {
+        fetch(url_logs, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -392,27 +389,23 @@ class Logs extends Component {
             .then(res => res.json())
             .then(data => {
 
-                // console.log("cdcdsc",data);
+                console.log("cdaaaaaaaaaaaaaaaacdsc",data);
                 this.setState({
-                    items: data.res
+                    logs: data.content
                 })
-                if (!data.res) {
+                if (!data.content) {
                     this.setState({
-                        items: []
+                        logs: []
                     })
                 }
 
-                // console.log(data.res);
+
 
 
             })
             .catch(err => console.log(err));
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log(prevProps,"prevProps")
-        // console.log(prevState,"prevState")
-        // console.log(snapshot,"snapshot")
-    }
+
 
     componentWillReceiveProps(nextProps, nextContext) {
         this.setState({
@@ -421,60 +414,56 @@ class Logs extends Component {
                 name: "",
                 description: ""
             },
-            items: null,
-            team: null
+            logs: null,
+            supervisors: null
         })
-        console.log(nextProps, "cdcdscdvfdgewdS")
-        console.log(nextContext, "cdcdscdvfdgewdS")
-        console.log(this.state, "cdcdscdvfdgewdS")
-        const url_project = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + nextProps.match.params.cid + "/projects/" + nextProps.match.params.pid;
-        console.log("this is nextProp", nextProps);
-        // console.log(url);
-        fetch(url_project, {
+
+        const url_sup = "https://sdmp-jss.herokuapp.com/api/ward/"+nextProps.match.params.wid;
+        // console.log("cddscsdCds",this.props);
+        fetch(url_sup,{
             headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
+                Authorization: "Bearer "+localStorage.getItem('token')
             }
         })
             .then(res => res.json())
             .then(data => {
 
-                // console.log("cdcdsc",data);
-
-                // console.log(data.res);
-                const arr = data.res.project.team;
-                this.setState({
-                    project: {
-                        name: data.res.project.name,
-                        description: data.res.project.description
-                    },
-                    team: arr
-                })
-
-            })
-
-            .catch(err => console.log(err));
-
-
-        const url_task = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + nextProps.match.params.cid + "/projects/" + nextProps.match.params.pid + "/tasks/";
-        // console.log(url);
-        fetch(url_task, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-
-                // console.log("cdcdsc",data);
-
-                this.setState({
-                    items: data.res
-                })
-                if (!data.res) {
+                console.log("emp list this ",data);
+                const arr = data.supervisors;
+                console.log(arr);
+                this.setState({ supervisors: arr })
+                if(!data.supervisors) {
                     this.setState({
-                        items: []
+                        supervisors: []
                     })
                 }
+            })
+
+            .catch(err => console.log(err))
+
+
+        const url_logs = "https://sdmp-jss.herokuapp.com/api/bin/"+nextProps.match.params.did+"/logs";
+        // console.log(url);
+        fetch(url_logs, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log("cdaaaaaaaaaaaaaaaacdsc",data);
+                this.setState({
+                    logs: data.content
+                })
+                if (!data.content) {
+                    this.setState({
+                        logs: []
+                    })
+                }
+
+
+
 
             })
             .catch(err => console.log(err));
@@ -486,61 +475,61 @@ class Logs extends Component {
         return <div {...props} style={backdropStyle} />;
     }
 
-    onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(this.state.items[newIndex]);
-        console.log(this.state.items[oldIndex]);
-        if (oldIndex !== newIndex && !this.state.items[oldIndex].status.completed && !this.state.items[newIndex].status.completed) {
-            let priority = 0;
-            this.setState(({ items }) => ({
-                items: arrayMove(items, oldIndex, newIndex),
-            }));
-            // console.log("oldindex",this.state.items[oldIndex-1],this.state.items[oldIndex],this.state.items[oldIndex+1])
-            let prevPriority = (this.state.items[newIndex - 1]) ? this.state.items[newIndex - 1].priority : 0;
-            let nextPriority = (this.state.items[newIndex + 1]) ? this.state.items[newIndex + 1].priority : 0;
-            if (prevPriority !== 0 && nextPriority !== 0) {
-                priority = (prevPriority + nextPriority) / 2;
-            }
-            else if (prevPriority === 0) {
-                priority = nextPriority - 20;
-            }
-            else if (nextPriority === 0) {
-                priority = prevPriority + 20;
-            }
-            // console.log("newindex", this.state.items[newIndex - 1], this.state.items[newIndex], this.state.items[newIndex + 1])
-
-            // console.log("priority", priority)
-            this.setState(prevState => {
-                const items = [...prevState.items];
-                items[newIndex] = { ...items[newIndex], priority: priority }
-                return { items }
-            })
-
-            const url_task_id = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + this.props.match.params.cid + "/projects/" + this.props.match.params.pid + "/tasks/" + this.state.items[newIndex].id;
-            // console.log(url);
-            const dataObj = {
-                "update": {
-                    "priority": priority
-                }
-            }
-
-            fetch(url_task_id, {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem('token'),
-                    "Content-Type": "application/json"
-                },
-                method: 'PUT',
-                body: JSON.stringify(dataObj)
-            })
-                .then(res => res.json())
-                .then(data => {
-
-                    console.log("anurag", data);
-
-                })
-                .catch(err => console.log(err));
-
-        }
-    };
+    // onSortEnd = ({ oldIndex, newIndex }) => {
+    //     console.log(this.state.items[newIndex]);
+    //     console.log(this.state.items[oldIndex]);
+    //     if (oldIndex !== newIndex && !this.state.items[oldIndex].status.completed && !this.state.items[newIndex].status.completed) {
+    //         let priority = 0;
+    //         this.setState(({ items }) => ({
+    //             items: arrayMove(items, oldIndex, newIndex),
+    //         }));
+    //         // console.log("oldindex",this.state.items[oldIndex-1],this.state.items[oldIndex],this.state.items[oldIndex+1])
+    //         let prevPriority = (this.state.items[newIndex - 1]) ? this.state.items[newIndex - 1].priority : 0;
+    //         let nextPriority = (this.state.items[newIndex + 1]) ? this.state.items[newIndex + 1].priority : 0;
+    //         if (prevPriority !== 0 && nextPriority !== 0) {
+    //             priority = (prevPriority + nextPriority) / 2;
+    //         }
+    //         else if (prevPriority === 0) {
+    //             priority = nextPriority - 20;
+    //         }
+    //         else if (nextPriority === 0) {
+    //             priority = prevPriority + 20;
+    //         }
+    //         // console.log("newindex", this.state.items[newIndex - 1], this.state.items[newIndex], this.state.items[newIndex + 1])
+    //
+    //         // console.log("priority", priority)
+    //         this.setState(prevState => {
+    //             const items = [...prevState.items];
+    //             items[newIndex] = { ...items[newIndex], priority: priority }
+    //             return { items }
+    //         })
+    //
+    //         const url_task_id = "https://us-central1-dexpert-admin.cloudfunctions.net/api/clients/" + this.props.match.params.cid + "/projects/" + this.props.match.params.pid + "/tasks/" + this.state.items[newIndex].id;
+    //         // console.log(url);
+    //         const dataObj = {
+    //             "update": {
+    //                 "priority": priority
+    //             }
+    //         }
+    //
+    //         fetch(url_task_id, {
+    //             headers: {
+    //                 Authorization: "Bearer " + localStorage.getItem('token'),
+    //                 "Content-Type": "application/json"
+    //             },
+    //             method: 'PUT',
+    //             body: JSON.stringify(dataObj)
+    //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //
+    //                 console.log("anurag", data);
+    //
+    //             })
+    //             .catch(err => console.log(err));
+    //
+    //     }
+    // };
 
     handleChange = (e) => {
         this.setState({
@@ -800,15 +789,16 @@ class Logs extends Component {
     getInitals(stringData) {
         console.log(stringData)
         let strings = stringData.split(" ");
-        if (strings.length > 1)
+        if (strings.length>1 && strings[1] !== "null")
             return strings[0].charAt(0).toUpperCase() + "" + strings[1].charAt(0).toUpperCase()
         else return stringData.charAt(0).toUpperCase();
     }
 
 
     render() {
-        console.log("ye hai props inside render method", this.state);
-        const { items, open } = this.state;
+        console.log("ye hai props inside render methodaaaaaaaaaaaaaaaaa", this.props.location.state.bin);
+        const { logs, open } = this.state;
+        const { bin } = this.props.location.state;
         let role = localStorage.getItem("role");
         // console.log("ye hai tasks",tasks)
         // console.log("ye hai items",items)
@@ -819,15 +809,15 @@ class Logs extends Component {
                 <div className="headerTask">
                     <div className="sets">
                         {
-                            this.state.team && this.state.team.map((employee, index) =>
+                            this.state.supervisors && this.state.supervisors.map((supervisor, index) =>
                                 // console.log(employee,"this is employee list")
                                 <div className="set" key={index}>
                                     <div className="profileImg">
-                                        <div className="profile" >{this.getInitals(employee.name)} </div>
+                                        <div className="profile" >{this.getInitals((supervisor.firstName)+" "+(supervisor.lastName))} </div>
                                     </div>
 
                                     <div className="name">
-                                        <p>{employee.name.split(" ")[0]}</p>
+                                        <p>{supervisor.firstName}</p>
                                     </div>
 
                                 </div>
@@ -911,39 +901,74 @@ class Logs extends Component {
 
 
                 </div>
+                {/*activatedAt: null*/}
+                {/*active: false*/}
+                {/*bin: "1400950137"*/}
+                {/*id: "5dbbdf85c0120d00045bd21d"*/}
+                {/*installedBy: {id: "5d70d2337b9ee2000431befa", username: "admin", firstName: "admin", lastName: null, authorities: "ROLE_ADMIN,ROLE_SUPERVISOR"}*/}
+                {/*landmark: null*/}
+                {/*location: {x: 26.861066, y: 80.90972, coordinates: Array(2), type: "Point"}*/}
+                {/*registeredAt: "2019-11-01T07:32:21.035Z"*/}
+                {/*status: {percentage: 69, lastUpdatedAt: "2019-11-02T15:14:01.141297Z", comment: "The bin status is currently set to random."}*/}
+
 
                 <div className="bodyTask">
-                    <h4>{(this.state.project.name) ? this.state.project.name : <lines className="shine proj_name"></lines>}</h4>
-                    <p>{(this.state.project.description) ? this.state.project.description : <lines className="shine proj_desc"></lines>}</p>
+                    {/*<h4>{(this.state.project.name) ? this.state.project.name : <lines className="shine proj_name"></lines>}</h4>*/}
+                    {/*<p>{(this.state.project.description) ? this.state.project.description : <lines className="shine proj_desc"></lines>}</p>*/}
+                    <h5> {`BIN : ${bin.bin}`} </h5>
+                    <p> {`Bin-Id : ${bin.id}`} </p>
+                    <p> {(bin.landmark)?`Landmark - ${bin.landmark}`:""} </p>
 
 
-                    {items && items.length !== 0 && <div className="tableHeader">
-                        <div className="num"></div>
-                        <div className="taskname">Task Name</div>
-                        <div className="created">Created on</div>
-                        <div className="estimate">Estimate Delivery</div>
-                        <div className="status">Status</div>
-                        {(role === "admin" || role === "manager") && <div className="edit"></div>}
-                        <div className="arrow"></div>
-                    </div>}
-                    {console.log(!items)}
-                    {console.log(items)}
 
-                    {!items && <div className="task-tableBody">
-                        <div className="num"><lines className="shine task_holder_num"></lines></div>
-                        <div className="taskname"><lines className="shine task_holder_name"></lines></div>
-                        <div className="created"><lines className="shine task_holder"></lines></div>
-                        <div className="estimate"><lines className="shine task_holder"></lines></div>
-                        <div className="status"><lines className="shine task_holder"></lines></div>
-                        <div className="arrow"></div>
-                    </div>}
 
-                    {items && items.length === 0 && <div className={"task-div"}><img className="no_task" src={NO_Tasks} alt="logo" /></div>}
-                    {items && items.length === 0 && <div className={"no_task-div"}><p className={"no_proj"}>No tasks added !!!</p></div>}
+                    {/*{!logs && <div className="task-tableBody">*/}
+                    {/*    <div className="num"><lines className="shine task_holder_num"></lines></div>*/}
+                    {/*    <div className="taskname"><lines className="shine task_holder_name"></lines></div>*/}
+                    {/*    <div className="created"><lines className="shine task_holder"></lines></div>*/}
+                    {/*    <div className="estimate"><lines className="shine task_holder"></lines></div>*/}
+                    {/*    <div className="status"><lines className="shine task_holder"></lines></div>*/}
+                    {/*    <div className="arrow"></div>*/}
+                    {/*</div>}*/}
 
-                    <Accordion>
-                        <SortableInfiniteList items={items} open={open} toOpen={this.open2} cid={this.props.match.params.cid} pid={this.props.match.params.pid} token={localStorage.getItem('token')} onSortEnd={this.onSortEnd} />
-                    </Accordion>
+                    {logs && logs.length === 0 && <div className={"task-div"}><img className="no_task" src={NO_Tasks} alt="logo" /></div>}
+                    {logs && logs.length === 0 && <div className={"no_task-div"}><p className={"no_proj"}>No Logs available !!!</p></div>}
+
+
+                    <Table responsive striped bordered hover >
+                        {logs && logs.length !== 0 && <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Time</th>
+                            <th>Precentage Full</th>
+
+                        </tr>
+                        </thead>}
+                        <tbody>
+
+                        { !logs &&
+                        <tr>
+                            <td></td>
+                            <td><lines className="shine task_holder"></lines></td>
+                            <td><lines className="shine task_holder"></lines></td>
+                        </tr>
+                        }
+
+                        {
+                            logs && logs.map( (log, key) => {
+                                return(
+                                    <tr>
+                                        <td>{key+1}</td>
+                                        <td>{log.instant}</td>
+                                        <td className="per_log">{log.percentage}</td>
+                                    </tr>)
+                            })
+                        }
+                        </tbody>
+                    </Table>
+                    {/*<Accordion>*/}
+                    {/*    <SortableInfiniteList items={items} open={open} toOpen={this.open2} cid={this.props.match.params.cid} pid={this.props.match.params.pid} token={localStorage.getItem('token')} onSortEnd={this.onSortEnd} />*/}
+                    {/*</Accordion>*/}
                     <Modal
                         onHide={this.close3}
                         className={"delete-model"}
