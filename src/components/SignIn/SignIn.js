@@ -19,15 +19,7 @@ class SignIn extends Component {
       x.className = x.className.replace("show", "");
     }, 5000);
   };
-  componentWillMount() {
-    // check auth id from local storage
-    console.log("my name is anurag", this.props)
-    if(localStorage.getItem("token")) {
-      window.location.href = "/wards/"
-      console.log("checked")
-    }
-    console.log("checked")
-    }
+
 
     componentWillReceiveProps(nextProps) {
       console.log("this is next props", nextProps);
@@ -40,15 +32,17 @@ class SignIn extends Component {
 
   render() {
     console.log("xsxsxsd");
-    // if (auth.uid && this.state.admin) return <Redirect to={"/profile/"} />;
+    if(localStorage.getItem("token")) return <Redirect to={"/wards/"} />
     return (
       <Fragment>
         <div className="App">
           <div className="App__Aside">
-            <h3>WELCOME TO DEXPERT</h3>
+            <div>
+            <h3>WELCOME TO Smart-Dustbin Portal</h3>
             <p className="Para">
-              One Stop station for your Project Express.
+              One Stop station for managing Waste Disposal in a Smarter Way.
             </p>
+            </div>
           </div>
           <div className="App__Form">
             <SignInForm admin={this.state.admin} clear={this.state.clear} />

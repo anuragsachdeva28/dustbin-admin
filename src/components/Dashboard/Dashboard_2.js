@@ -48,7 +48,10 @@ class Dashboard_2 extends Component{
 
                 <div className="client_list">
                     { this.state.wards && this.state.wards.map( (ward,key) =>
-                        <NavLink to = {"/supervisors/wards/" + (ward.id) + "/supervisors/"} key={key} activeClassName={"active"} >
+                        <NavLink to = {{
+                            pathname: "/supervisors/wards/" + (ward.id) + "/supervisors/",
+                            state: ward
+                        }} key={key} activeClassName={"active"} >
                             <div className="listTab">{ ward.name }</div>
                         </NavLink>
                     ) }

@@ -291,18 +291,22 @@ class Supervisor extends Component {
                 </div>
 
                 <div className="userBody">
-                    <h4 className="table-heading">{ (this.state.name) ? this.state.name : <lines className="shine proj_name"></lines> }</h4>
+                    {console.log(this.props,"anurag")}
+                    <h4 className="table-heading">{ (this.props.location.state.name) ? `Ward : ${this.props.location.state.name}` : <lines className="shine proj_name"></lines> }</h4>
                     <p>
-                        { (this.state.description ? this.state.description : <lines className="shine proj_desc"></lines>) }
+                        { (this.props.location.state ? `Ward-Id : ${this.props.location.state.id}` : <lines className="shine proj_desc"></lines>) }
+                    </p>
+                    <p>
+                        { (this.props.location.state ? `  Description - ${this.props.location.state.description}` : <lines className="shine proj_desc"></lines>) }
                     </p>
                     <br />
 
                     {this.state.supervisors && this.state.supervisors.length!==0 && <div className="client-tableHeader">
                         <div className="num vert-align"></div>
-                        <div className="username light vert-align">User Name</div>
+                        <div className="username light vert-align">Name</div>
                         {/*<div className="phone">Phone No.</div>*/}
-                        <div className="email vert-align">Email Address</div>
-                        <div className="role vert-align">Role</div>
+                        <div className="email vert-align">Username</div>
+                        {/*<div className="role vert-align">Role</div>*/}
                         {(role==="admin" || role==="manager") && <div className="num vert-align"></div>}
                         {(role==="admin" || role==="manager") && <div className="num vert-align"></div>}
                         {(role==="admin" || role==="manager") && <div className="num vert-align"></div>}
@@ -329,23 +333,14 @@ class Supervisor extends Component {
 
                         {
                             this.state.supervisors && this.state.supervisors.map( (employee,index) =>{
-                                let name = employee.firstName+" "+employee.lastName;
-                                let editId = employee.id;
-                                let editNum = employee.number;
-                                let editEmail = employee.email;
-                                let editRole = employee.role;
-                                // let empRole = (employee.role.admin)? "Admin" : (employee.role.manager)? "Manager" : (employee.role.editor)? "Editor" : "Viewer";
-                                    return <div className="client-tableBody" key={index}>
-                                    <div className="num vert-align">{index+1}</div>
-                                    <div className="username vert-align">{ name }</div>
-                                    {/*<div className="phone">{ (employee.number)? employee.number : "NA" }</div>*/}
-                                    <div className="email vert-align">{ employee.email }</div>
-                                    {/*<div className="role vert-align">{ empRole }</div>*/}
+                                let name = employee.firstName+" "+(employee.lastName==="null")?"":employee.lastName;
 
-                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open2({editName, editId, editNum, editEmail, editRole})}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></div>}*/}
-                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.resetPass(employee.email)}><i className="fa fa-key" aria-hidden="true" title="Reset Password"></i></div>}*/}
-                                    {/*{(role==="admin" || ((role==="manager") && !((empRole === "Admin") || (empRole === "Manager")))) && <div className="icons vert-align" onClick={() => this.open3(employee.id)}><i className="fa fa-trash" aria-hidden="true" title="Delete"></i></div>}*/}
-                                </div>
+                                    return <div className="client-tableBody" key={index}>
+                                        <div className="num vert-align">{index+1}</div>
+                                        <div className="username vert-align">{ `${employee.firstName} ${((employee.lastName)===null)?"":employee.lastName}` }</div>
+                                        {/*<div className="phone">{ (employee.number)? employee.number : "NA" }</div>*/}
+                                        <div className="email vert-align">{ employee.username }</div>
+                                    </div>
                             }
 
                              )

@@ -4,30 +4,34 @@
     
   }
   
-  .App__Aside {
-    position: relative;
-    width: 45%;
-    background: linear-gradient(119.79deg, #FB1352 1.03%, #370EF7 116.89%);
-    color: white;
-  }
+.App__Aside {
+  position: relative;
+  width: 45%;
+  background: #36394A;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
   h3{
-    position: absolute;
+    /*position: absolute;*/
     padding: 0 5%;
-    left: 6%;
-    top: 232px;
+    /*left: 6%;*/
+    /*top: 232px;*/
 
     /* font-family: Futura Hv BT; */
     font-size: 24px;
     line-height: 29px;
+    font-weight: bold;
   }
 
   .Para{
-    position: absolute;
+    /*position: absolute;*/
     padding: 0 5%;
-    
-    left: 6%;
-    top: 277px;
+    font-weight: lighter;
+    /*left: 6%;*/
+    /*top: 277px;*/
     
     /* font-family: Futura LT; */
     font-size: 18px;
@@ -118,7 +122,7 @@
   }
   
   .FormField__Button {
-    background-color: #6053F5;
+    background-color: #36394A;
     color: white;
     border: none;
     outline: none;

@@ -26,7 +26,7 @@ class SignInForm extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({loading:true,error:null});
     console.log("The form was submitted with the following data:");
