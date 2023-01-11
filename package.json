@@ -12,7 +12,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "firebase": "^6.2.4",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.5.14",
     "npm": "^6.9.2",
     "react": "next",
